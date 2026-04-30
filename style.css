@@ -320,11 +320,15 @@ img { display: block; max-width: 100%; }
 .main-content {
     margin-left: var(--sidebar-w);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .section {
     padding: 8rem 6rem 6rem;
-    max-width: 1100px;
+    max-width: 1200px;
+    width: 100%;
 }
 
 /* =========================================
@@ -333,8 +337,8 @@ img { display: block; max-width: 100%; }
 .section-divider {
     height: 1px;
     background: var(--border);
-    margin-left: var(--sidebar-w);
-    margin-right: 0;
+    width: 100%;
+    max-width: 1200px;
 }
 
 /* =========================================
@@ -822,13 +826,14 @@ img { display: block; max-width: 100%; }
     border-top: 1px solid var(--border);
     padding: 3rem 6rem;
     margin-top: 2rem;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .footer-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1100px;
 }
 
 .footer-brand {
@@ -870,19 +875,42 @@ img { display: block; max-width: 100%; }
 }
 
 /* =========================================
-   Responsive — Tablet
+   Responsive — Small Desktop / Large Laptop
+   ========================================= */
+@media (max-width: 1280px) {
+    .section {
+        padding: 6rem 4rem 5rem;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr 320px;
+        gap: 3.5rem;
+    }
+
+    .section-grid {
+        grid-template-columns: 150px 1fr;
+        gap: 3rem;
+    }
+
+    .footer { padding: 2.5rem 4rem; }
+}
+
+/* =========================================
+   Responsive — Tablet Landscape / Small Laptop
    ========================================= */
 @media (max-width: 1024px) {
     .sidebar { display: none; }
     .mobile-header { display: flex; }
     .main-content { margin-left: 0; }
-    .section-divider { margin-left: 0; }
 
-    .section { padding: 5rem 2rem 4rem; }
+    .section {
+        padding: 5rem 2.5rem 4rem;
+        max-width: 100%;
+    }
 
     .section-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .section-label {
@@ -894,38 +922,255 @@ img { display: block; max-width: 100%; }
     }
 
     .hero-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 280px;
         gap: 3rem;
     }
 
-    .hero-portrait { max-width: 320px; }
+    .hero-name {
+        font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+    }
 
     .exp-card, .edu-card {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
+        grid-template-columns: 140px 1fr;
+        gap: 1.5rem;
     }
 
     .achievements-grid {
         grid-template-columns: 1fr 1fr;
     }
 
-    .footer { padding: 2rem; }
-    .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .footer { padding: 2rem 2.5rem; }
+    .footer-inner {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   Responsive — Tablet Portrait
+   ========================================= */
+@media (max-width: 768px) {
+    .section {
+        padding: 4rem 1.5rem 3rem;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .hero-text {
+        order: 2;
+        text-align: center;
+    }
+
+    .hero-portrait {
+        order: 1;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .hero-location {
+        justify-content: center;
+    }
+
+    .hero-name {
+        font-size: clamp(2.2rem, 6vw, 3rem);
+    }
+
+    .name-line {
+        white-space: normal;
+    }
+
+    .hero-line {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .scroll-cue {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .exp-card, .edu-card {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .exp-meta, .edu-meta {
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .contact-grid {
+        justify-content: center;
+    }
+
+    .about-lead {
+        font-size: 1.1rem;
+    }
+
+    .footer { padding: 2rem 1.5rem; }
+
+    .mobile-nav-overlay a {
+        font-size: 1.25rem;
+    }
 }
 
 /* =========================================
    Responsive — Mobile
    ========================================= */
-@media (max-width: 640px) {
-    .section { padding: 4rem 1.25rem 3rem; }
+@media (max-width: 480px) {
+    .section {
+        padding: 3.5rem 1.25rem 2.5rem;
+    }
 
-    .hero-name { font-size: 2.8rem; }
+    .hero-name {
+        font-size: 2.2rem;
+    }
 
-    .hero-portrait { max-width: 260px; }
+    .hero-overline {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+    }
 
-    .achievements-grid { grid-template-columns: 1fr; }
+    .hero-portrait {
+        max-width: 220px;
+    }
 
-    .contact-grid { flex-direction: column; }
+    .portrait-accent {
+        top: 10px;
+        left: 10px;
+    }
+
+    .about-lead {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .about-body {
+        font-size: 0.88rem;
+    }
+
+    .exp-role {
+        font-size: 1rem;
+    }
+
+    .role-tag {
+        font-size: 0.55rem;
+        padding: 0.15rem 0.4rem;
+    }
+
+    .exp-period, .edu-period {
+        font-size: 0.72rem;
+    }
+
+    .exp-details li {
+        font-size: 0.82rem;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .achievement-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .contact-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-chip {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .skill-tag {
+        padding: 0.4rem 0.9rem;
+        font-size: 0.75rem;
+    }
+
+    .skill-group-title {
+        font-size: 0.72rem;
+    }
+
+    .label-number {
+        font-size: 0.65rem;
+    }
+
+    .label-text {
+        font-size: 0.68rem;
+    }
+
+    .subsection-title {
+        font-size: 0.72rem;
+    }
+
+    .edu-degree {
+        font-size: 1rem;
+    }
+
+    .footer { padding: 1.5rem 1.25rem; }
+
+    .footer-copy {
+        font-size: 0.7rem;
+    }
+
+    .footer-tagline {
+        font-size: 0.65rem;
+    }
+}
+
+/* =========================================
+   Responsive — Very Small Mobile
+   ========================================= */
+@media (max-width: 360px) {
+    .section {
+        padding: 3rem 1rem 2rem;
+    }
+
+    .hero-name {
+        font-size: 1.9rem;
+    }
+
+    .hero-portrait {
+        max-width: 180px;
+    }
+
+    .mobile-header {
+        padding: 0 1rem;
+    }
+
+    .contact-chip {
+        font-size: 0.72rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .exp-role {
+        font-size: 0.92rem;
+    }
+
+    .achievement-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .achievement-card h4 {
+        font-size: 0.82rem;
+    }
+
+    .achievement-card p {
+        font-size: 0.75rem;
+    }
 }
 
 /* =========================================
