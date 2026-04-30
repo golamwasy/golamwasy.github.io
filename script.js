@@ -1,40 +1,110 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Reveal animations on scroll
-    const revealElements = document.querySelectorAll('.reveal');
 
-    const revealCallback = (entries, observer) => {
+    /* =========================================
+       Theme Toggle (Dark / Light)
+       ========================================= */
+    const root = document.documentElement;
+    const toggleDesktop = document.getElementById('theme-toggle');
+    const toggleMobile = document.getElementById('theme-toggle-mobile');
+
+    // Restore saved theme or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    root.setAttribute('data-theme', savedTheme);
+
+    function toggleTheme() {
+        const current = root.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    }
+
+    if (toggleDesktop) toggleDesktop.addEventListener('click', toggleTheme);
+    if (toggleMobile)  toggleMobile.addEventListener('click', toggleTheme);
+
+    /* =========================================
+       Reveal on Scroll (IntersectionObserver)
+       ========================================= */
+    const revealEls = document.querySelectorAll('.reveal-up');
+
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Optional: Stop observing once revealed
-                // observer.unobserve(entry.target);
+                // Respect inline animation-delay via setTimeout
+                const delay = parseFloat(entry.target.style.animationDelay || '0') * 1000;
+                setTimeout(() => entry.target.classList.add('visible'), delay);
             }
         });
-    };
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    const revealOptions = {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-        rootMargin: "0px 0px -50px 0px"
-    };
+    revealEls.forEach(el => revealObserver.observe(el));
 
-    const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // Smooth scrolling for anchor links
+    /* =========================================
+       Smooth Scroll for Anchor Links
+       ========================================= */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const navHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                const offset = window.innerWidth <= 1024 ? 80 : 0;
+                const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: pos, behavior: 'smooth' });
+
+                // Close mobile nav if open
+                const overlay = document.querySelector('.mobile-nav-overlay');
+                const toggle = document.getElementById('menu-toggle');
+                if (overlay && overlay.classList.contains('open')) {
+                    overlay.classList.remove('open');
+                    toggle.classList.remove('open');
+                }
             }
         });
     });
+
+    /* =========================================
+       Active Nav Link on Scroll
+       ========================================= */
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[data-section]');
+
+    const activateLink = () => {
+        let current = '';
+        sections.forEach(section => {
+            const top = section.offsetTop - 200;
+            if (window.scrollY >= top) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.dataset.section === current);
+        });
+    };
+
+    window.addEventListener('scroll', activateLink, { passive: true });
+    activateLink();
+
+    /* =========================================
+       Mobile Menu Toggle
+       ========================================= */
+    const menuToggle = document.getElementById('menu-toggle');
+    if (menuToggle) {
+        // Create mobile nav overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'mobile-nav-overlay';
+        overlay.innerHTML = `
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="cv.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+        `;
+        document.body.appendChild(overlay);
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            overlay.classList.toggle('open');
+        });
+    }
+
 });
