@@ -5,8 +5,7 @@
 :root {
     /* Static tokens */
     --font: 'Montserrat', -apple-system, 'Helvetica Neue', sans-serif;
-    --sidebar-w: 80px;
-    --sidebar-w-expanded: 200px;
+    --sidebar-w: 180px;
     --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -47,30 +46,30 @@
    Light Mode
    ========================================= */
 [data-theme="light"] {
-    --bg:           #f8f8fa;
+    --bg:           #f5f5f7;
     --bg-surface:   #ffffff;
-    --bg-elevated:  #eeeef2;
-    --bg-muted:     #dcdce2;
-    --text-primary: #1a1a1f;
-    --text-secondary: rgba(26,26,31,0.82);
-    --text-tertiary:  rgba(26,26,31,0.58);
-    --text-muted:     rgba(26,26,31,0.40);
-    --text-faint:     rgba(26,26,31,0.18);
-    --border:         rgba(26,26,31,0.10);
-    --border-subtle:  rgba(26,26,31,0.05);
-    --glass-bg:       rgba(248,248,250,0.75);
-    --glass-overlay:  rgba(248,248,250,0.96);
+    --bg-elevated:  #eaeaef;
+    --bg-muted:     #d4d4db;
+    --text-primary: #111115;
+    --text-secondary: rgba(17,17,21,0.90);
+    --text-tertiary:  rgba(17,17,21,0.70);
+    --text-muted:     rgba(17,17,21,0.55);
+    --text-faint:     rgba(17,17,21,0.30);
+    --border:         rgba(17,17,21,0.18);
+    --border-subtle:  rgba(17,17,21,0.08);
+    --glass-bg:       rgba(245,245,247,0.85);
+    --glass-overlay:  rgba(245,245,247,0.97);
     --cobalt:         #1d4ed8;
-    --cobalt-bright:  #2563eb;
-    --cobalt-glow:    rgba(37,99,235,0.18);
-    --cobalt-subtle:  rgba(37,99,235,0.06);
-    --selection-bg:   #2563eb;
+    --cobalt-bright:  #1e40af;
+    --cobalt-glow:    rgba(37,99,235,0.22);
+    --cobalt-subtle:  rgba(37,99,235,0.08);
+    --selection-bg:   #1d4ed8;
     --selection-text: #ffffff;
     --portrait-filter: grayscale(5%) contrast(1.02);
     --portrait-hover:  grayscale(0%) contrast(1);
-    --shadow-sm:  0 2px 8px rgba(0,0,0,0.06);
-    --shadow-md:  0 4px 16px rgba(0,0,0,0.08);
-    --shadow-lg:  0 8px 32px rgba(0,0,0,0.10);
+    --shadow-sm:  0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md:  0 4px 16px rgba(0,0,0,0.12);
+    --shadow-lg:  0 8px 32px rgba(0,0,0,0.14);
     --invert-icon: 0;
 }
 
@@ -121,10 +120,7 @@ img { display: block; max-width: 100%; }
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-right: 1px solid var(--border);
-    transition: width 0.4s var(--ease-out);
 }
-
-.sidebar:hover { width: var(--sidebar-w-expanded); }
 
 .sidebar-inner {
     display: flex;
@@ -166,12 +162,12 @@ img { display: block; max-width: 100%; }
 .nav-link {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+    padding: 0.6rem 0.85rem;
     border-radius: 8px;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-muted);
     transition: all 0.3s var(--ease);
@@ -201,12 +197,6 @@ img { display: block; max-width: 100%; }
 }
 
 .nav-label {
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: all 0.3s var(--ease);
-}
-
-.sidebar:hover .nav-label {
     opacity: 1;
     transform: translateX(0);
 }
@@ -247,26 +237,21 @@ img { display: block; max-width: 100%; }
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    width: 40px; height: 40px;
+    width: 100%;
+    height: 38px;
     border-radius: 8px;
     background: var(--cobalt);
     color: var(--text-primary);
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     transition: all 0.3s var(--ease);
     overflow: hidden;
     white-space: nowrap;
-}
-
-.resume-btn span { display: none; font-size: 0.7rem; text-transform: uppercase; }
-
-.sidebar:hover .resume-btn {
-    width: 100%;
     padding: 0 1rem;
 }
 
-.sidebar:hover .resume-btn span { display: inline; }
+.resume-btn span { display: inline; font-size: 0.65rem; text-transform: uppercase; }
 
 .resume-btn:hover {
     background: var(--cobalt-bright);
@@ -472,41 +457,64 @@ img { display: block; max-width: 100%; }
     opacity: 0.5;
 }
 
-/* Scroll Cue */
+/* Scroll Cue — Mouse Icon */
 .scroll-cue {
     position: absolute;
-    bottom: 3rem;
-    left: 0;
+    bottom: 2.5rem;
+    right: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    gap: 0.6rem;
     color: var(--text-faint);
 }
 
-.scroll-line {
-    width: 40px; height: 1px;
-    background: var(--text-faint);
+.scroll-mouse {
+    width: 24px;
+    height: 38px;
+    border: 2px solid var(--text-faint);
+    border-radius: 12px;
     position: relative;
-    overflow: hidden;
+    transition: border-color 0.3s var(--ease);
 }
 
-.scroll-line::after {
+.scroll-mouse::after {
     content: '';
     position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 8px;
+    border-radius: 3px;
     background: var(--cobalt-bright);
-    animation: scrollPulse 2s ease-in-out infinite;
+    animation: scrollDot 2s ease-in-out infinite;
 }
 
-@keyframes scrollPulse {
-    0% { left: -100%; }
-    50% { left: 0; }
-    100% { left: 100%; }
+.scroll-cue:hover .scroll-mouse {
+    border-color: var(--cobalt-bright);
+}
+
+.scroll-chevrons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    font-size: 0.7rem;
+    line-height: 1;
+    opacity: 0.5;
+    animation: scrollChevron 2s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+    0%   { top: 6px; opacity: 1; }
+    50%  { top: 20px; opacity: 0.3; }
+    100% { top: 6px; opacity: 1; }
+}
+
+@keyframes scrollChevron {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50%      { transform: translateY(4px); opacity: 0.8; }
 }
 
 /* =========================================
@@ -989,6 +997,7 @@ img { display: block; max-width: 100%; }
     }
 
     .scroll-cue {
+        right: auto;
         left: 50%;
         transform: translateX(-50%);
     }
