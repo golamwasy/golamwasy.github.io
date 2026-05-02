@@ -21,7 +21,7 @@ import {
    GitBranch,
    ExternalLink,
    Monitor,
-   Search, Heart
+   Search, Heart, Briefcase, GraduationCap, User, Cpu
 } from "lucide-react";
 import { TerminalWindow } from "@/components/TerminalWindow";
 import { SkillSphere } from "@/components/SkillSphere";
@@ -63,6 +63,21 @@ export default function Home() {
 
    return (
       <main className="relative min-h-screen bg-[#18181b] selection:bg-blue-500/30 overflow-x-hidden">
+         {/* Top Center Fancy Badge */}
+         <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[200] pointer-events-none">
+            <div className="glass-panel px-4 py-1.5 rounded-full border-zinc-800 flex items-center gap-3 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+               <div className="relative">
+                  <div className="w-2 h-2 rounded-full bg-red-500 animate-ping absolute" />
+                  <div className="w-2 h-2 rounded-full bg-red-600 relative" />
+               </div>
+               <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-zinc-300">
+                     Development in progress
+                  </span>
+               </div>
+            </div>
+         </div>
+
          <CursorGlow />
          <Navigation />
          <div className="fixed inset-0 grid-background pointer-events-none z-0" />
@@ -88,7 +103,7 @@ export default function Home() {
                         </div>
 
                         <p className="text-lg text-zinc-400 font-mono leading-relaxed max-w-xl text-center lg:text-left mx-auto lg:mx-0">
-                           <span className="text-blue-500">{"<Architect />"}</span> Engineering Beyond Boundaries. Specializing in distributed systems and high-performance applications.
+                           <span className="text-blue-500">{"<Software Engineer />"}</span> Engineering Beyond Boundaries. Specializing in scalable backend architectures and distributed systems.
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start">
@@ -129,7 +144,7 @@ export default function Home() {
                                  <div className="pl-4"><span className="text-purple-400">return</span> (</div>
                                  <div className="pl-8 text-blue-300">{"<Developer"}</div>
                                  <div className="pl-12 text-zinc-400">name=<span className="text-green-400">"Golam Wasy"</span></div>
-                                 <div className="pl-12 text-zinc-400">role=<span className="text-green-400">"Backend Architect"</span></div>
+                                 <div className="pl-12 text-zinc-400">role=<span className="text-green-400">"Software Engineer"</span></div>
                                  <div className="pl-8 text-blue-300">{"/>"}</div>
                                  <div className="pl-4">);</div>
                                  <div>{"};"}</div>
@@ -154,7 +169,7 @@ export default function Home() {
                {/* 2. About Section */}
                <section id="about" className="min-h-screen flex flex-col justify-center py-24">
                   <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
-                     <span className="text-blue-500">{">_"}</span> # About.system
+                     <User className="text-blue-500 w-8 h-8" /> # about.system
                   </h2>
                   <div className="grid lg:grid-cols-[450px_1fr] gap-12 items-start">
                      <motion.div className="glass-panel border-blue-500/20 rounded-2xl p-8 space-y-8 terminal-shadow" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
@@ -180,7 +195,7 @@ export default function Home() {
                            </div>
                            <div className="flex justify-between">
                               <span className="text-zinc-500">Status</span>
-                              <span className="bg-green-500/10 text-green-500 px-2 py-0.5 rounded border border-green-500/20">Open</span>
+                              <span className="bg-green-500/10 text-green-500 px-2 py-0.5 rounded border border-green-500/20">Active</span>
                            </div>
                         </div>
                      </motion.div>
@@ -193,14 +208,14 @@ export default function Home() {
                                  <span>whoami</span>
                               </div>
                               <p className="text-zinc-400 pl-6">
-                                 Software Engineer specializing in end-to-end web applications and high-availability systems. Currently engineering scalable, production-grade solutions at Ritchie Bros.
+                                 Software Engineer with a mix of deep-dive research and hands-on building. From analyzing telecom data at the University of Helsinki to architecting enterprise-grade APIs, I focus on building robust features and modernizing high-availability systems with a focus on customer needs.
                               </p>
                               <div className="flex gap-2 text-purple-400">
                                  <span>{"->"}</span>
                                  <span>cat mission.txt</span>
                               </div>
                               <p className="text-zinc-400 pl-6">
-                                 Translating complex business requirements into robust technical solutions. Focused on <span className="text-white">Microservices</span>, <span className="text-white">Real-time Systems</span>, and <span className="text-white">AI Integration</span>.
+                                 Translating complex business requirements into robust technical solutions. Experienced in <span className="text-white">AWS</span>, <span className="text-white">Docker</span>, <span className="text-white">Kubernetes</span>, and full-stack development using <span className="text-white">Spring Boot</span> and <span className="text-white">React/Angular</span>.
                               </p>
                            </div>
                         </TerminalWindow>
@@ -208,8 +223,8 @@ export default function Home() {
                         <div className="grid grid-cols-3 gap-4">
                            {[
                               { label: 'Experience', val: '4+', unit: 'YRS', icon: Layout },
-                              { label: 'Projects', val: '20+', unit: 'DEP', icon: Code2 },
-                              { label: 'Caffeine', val: '∞', unit: 'ML', icon: Coffee },
+                              { label: 'Projects', val: '15+', unit: 'PRJ', icon: Code2 },
+                              { label: 'Hackathons', val: '1', unit: 'WIN', icon: Coffee },
                            ].map((stat) => (
                               <div key={stat.label} className="bg-zinc-900/50 border border-zinc-800 p-4 rounded-xl flex flex-col gap-2">
                                  <div className="flex items-center gap-2 text-blue-500">
@@ -230,7 +245,7 @@ export default function Home() {
                {/* 3. Skills Section */}
                <section id="skills" className="min-h-screen flex flex-col justify-center py-24 relative">
                   <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
-                     <span className="text-blue-500">{">_"}</span> # Skills.json
+                     <Cpu className="text-blue-500 w-8 h-8" /> # skills.json
                   </h2>
                   <div className="relative">
                      <SkillSphere />
@@ -240,7 +255,7 @@ export default function Home() {
                {/* 4. Experience Section */}
                <section id="experience" className="min-h-screen flex flex-col justify-center py-24">
                   <h2 className="text-3xl font-mono mb-20 flex items-center gap-4 text-white">
-                     <GitBranch className="text-blue-500 w-8 h-8" /> $ git log --stat --oneline
+                     <Briefcase className="text-blue-500 w-8 h-8" /> $ cat ~/career/experience.log
                   </h2>
 
                   <div className="relative space-y-24">
@@ -251,19 +266,46 @@ export default function Home() {
                            company: 'Ritchie Bros.',
                            role: 'Associate Software Engineer',
                            period: '2025-06 - Present',
-                           hash: 'a1b2ca2',
-                           branch: 'engineer',
-                           desc: 'Leading development of scalable web applications and POS systems using Java and Spring Boot. Architecting cloud infrastructure on AWS.',
-                           tech: ['React', 'Next.js', 'Spring Boot', 'AWS', 'Docker']
+                           hash: 'rb_0625',
+                           branch: 'payments',
+                           desc: 'Architecting backend systems and features for a digital payments platform. Migrating legacy internal tools to React, handling multi-payment workflows, and resolving security vulnerabilities.',
+                           tech: ['Java', 'Spring Boot', 'React', 'Snyk', 'CircleCI', 'LaunchDarkly']
                         },
                         {
-                           company: 'Wavelet Solutions',
-                           role: 'Software Developer',
+                           company: 'University of Helsinki',
+                           role: 'Research Assistant (Thesis)',
+                           period: '2025-01 - 2025-04',
+                           hash: 'uh_0125',
+                           branch: 'thesis',
+                           desc: 'Focused on adaptive data normalization for telecommunications and IoT datasets to improve anomaly detection performance.',
+                           tech: ['Python', 'IoT', 'Anomaly Detection', 'Data Modeling']
+                        },
+                        {
+                           company: 'University of Helsinki & Nokia Bell Labs',
+                           role: 'Research Assistant (Intern)',
+                           period: '2024-05 - 2024-08',
+                           hash: 'nokia_0524',
+                           branch: 'intern',
+                           desc: 'Collaborated on data efficiency techniques for mobile networks research, evaluating normalization methods for 6G research.',
+                           tech: ['Data Efficiency', 'Mobile Networks', 'Research']
+                        },
+                        {
+                           company: 'Wavelet Solutions Sdn. Bhd.',
+                           role: 'Software Developer (Freelance)',
                            period: '2022-03 - 2023-02',
-                           hash: 'c3d4eb1',
-                           branch: 'developer',
-                           desc: 'Developed mobile apps and web consoles using Ionic/Angular and Java Spring Boot. Managed PostgreSQL databases.',
-                           tech: ['Angular', 'Ionic', 'Java', 'Spring Boot', 'Postgres']
+                           hash: 'wav_0322',
+                           branch: 'freelance',
+                           desc: 'Developed mobile apps and web consoles using Ionic/Angular. Built RESTful APIs and managed PostgreSQL databases on AWS.',
+                           tech: ['Angular', 'Ionic', 'Java', 'Spring Boot', 'AWS']
+                        },
+                        {
+                           company: 'BigLedger Sdn. Bhd.',
+                           role: 'Software Developer (Intern)',
+                           period: '2021-08 - 2022-02',
+                           hash: 'big_0821',
+                           branch: 'backend',
+                           desc: 'Specialized in Java Spring Boot for backend development and database migration scripts. Deployed applications on AWS.',
+                           tech: ['Java', 'Spring Boot', 'Database Migration', 'AWS', 'Git']
                         }
                      ].map((exp, i) => (
                         <motion.div key={i} className={cn("flex w-full items-center gap-12", i % 2 === 0 ? "flex-row" : "flex-row-reverse")} initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
@@ -273,7 +315,6 @@ export default function Home() {
                                     <div>
                                        <h3 className="text-xl font-bold text-white">{exp.role} <span className="text-zinc-600 font-normal">@ {exp.company}</span></h3>
                                     </div>
-                                    <span className="text-[10px] font-mono text-zinc-600 uppercase">{exp.company}</span>
                                  </div>
                                  <p className="text-sm text-zinc-400 mb-6 border-l-2 border-zinc-800 pl-4 py-2 italic leading-relaxed">
                                     {exp.desc}
@@ -310,21 +351,21 @@ export default function Home() {
                {/* 5. Projects Section */}
                <section id="education" className="min-h-screen flex flex-col justify-center py-24">
                   <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
-                     <FolderOpen className="text-blue-500 w-8 h-8" /> $ ls -la ~/education
+                     <GraduationCap className="text-blue-500 w-8 h-8" /> $ ls -la ~/education
                   </h2>
 
                   <div className="grid lg:grid-cols-[300px_1fr] gap-8">
                      <div className="glass-panel border-zinc-800 rounded-xl overflow-hidden flex flex-col h-[600px] shadow-2xl">
                         <div className="bg-zinc-900/80 p-4 border-b border-zinc-800 flex items-center justify-between">
                            <div className="flex items-center gap-2 text-zinc-400 text-xs font-mono">
-                              <Monitor className="w-3 h-3" /> Repositories
+                              <Monitor className="w-3 h-3" /> Diplomas
                            </div>
                            <span className="text-[10px] bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-500">2</span>
                         </div>
                         <div className="flex-1 overflow-y-auto p-2 space-y-2">
                            {[
-                              { name: 'M.Sc. Computer Science', type: 'Public', lang: 'Data_Normalizer', date: '2025' },
-                              { name: 'B.Sc. Computer Science', type: 'Public', lang: 'UTM_Software', date: '2022' },
+                              { name: 'M.Sc. Computer Science', type: 'Public', lang: 'Adaptive_Norm', date: '2025' },
+                              { name: 'B.Sc. Software Engineering', type: 'Public', lang: 'Data_Analytics', date: '2022' },
                            ].map(repo => (
                               <div key={repo.name} className="p-3 rounded-lg border border-transparent hover:border-zinc-800 hover:bg-zinc-900/50 transition-all cursor-pointer group">
                                  <div className="flex justify-between items-start mb-1">
@@ -346,22 +387,22 @@ export default function Home() {
                               title: "M.Sc. Computer Science",
                               school: "University of Helsinki",
                               period: "2023 - 2025",
-                              desc: "Focusing on adaptive data normalization and anomaly detection for IoT sensors.",
+                              desc: "Focusing on adaptive data normalization techniques to improve anomaly detection performance on telecommunication and IoT datasets.",
                               tech: ["Data Normalization", "Anomaly Detection"]
                            },
                            {
                               title: "B.Sc. Computer Science",
-                              school: "UTM Malaysia",
+                              school: "Universiti Teknologi Malaysia",
                               period: "2018 - 2022",
-                              desc: "Studied core software engineering principles and data analytics.",
-                              tech: ["Software Design", "Data Analytics"]
+                              desc: "Bachelor of Computer Science (Software Engineering). Graduated with Dean's List honors. Thesis: Data Analytics for COVID-19 Prediction.",
+                              tech: ["Software Engineering", "Data Analytics"]
                            }
                         ].map((proj, i) => (
                            <motion.div key={i} className="glass-panel border-zinc-800 hover:border-blue-500/30 rounded-xl p-6 transition-all group" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
                               <div className="flex items-center gap-3 mb-4">
                                  <FileCode className="w-5 h-5 text-blue-500" />
                                  <h3 className="font-bold text-white group-hover:text-blue-400 transition-colors">{proj.title}</h3>
-                                 <span className="text-[10px] ml-auto border border-zinc-800 px-1.5 py-0.5 rounded text-zinc-500 font-mono uppercase">Completed</span>
+                                 <span className="text-[10px] ml-auto border border-zinc-800 px-1.5 py-0.5 rounded text-zinc-500 font-mono uppercase">Certified</span>
                               </div>
                               <p className="text-sm text-zinc-400 mb-6 leading-relaxed h-12 overflow-hidden">
                                  {proj.desc}
@@ -373,7 +414,7 @@ export default function Home() {
                               </div>
                               <div className="flex justify-between items-center text-[10px] font-mono text-zinc-600 pt-4 border-t border-zinc-900">
                                  <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {proj.school}</span>
-                                 <span className="flex items-center gap-1 hover:text-blue-400 cursor-pointer">Certificate <ExternalLink className="w-3 h-3" /></span>
+                                 <span className="flex items-center gap-1 hover:text-blue-400 cursor-pointer">Verify <ExternalLink className="w-3 h-3" /></span>
                               </div>
                            </motion.div>
                         ))}
@@ -384,7 +425,7 @@ export default function Home() {
                {/* 6. Contact Section */}
                <section id="contact" className="pt-16 pb-8">
                   <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
-                     <Send className="text-blue-500 w-8 h-8" /> ./contact.exe
+                     <Mail className="text-blue-500 w-8 h-8" /> ./contact.exe
                   </h2>
                   <div className="grid lg:grid-cols-2 gap-8">
                      <TerminalWindow title="contact.json" className="bg-[#0b0b0d] border-zinc-800">

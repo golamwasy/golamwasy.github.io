@@ -1,14 +1,15 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { Monitor, User, Cpu, Briefcase, GraduationCap, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { id: 'hero', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'education', label: 'Education' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'hero', label: 'Home', Icon: Monitor },
+  { id: 'about', label: 'About', Icon: User },
+  { id: 'skills', label: 'Skills', Icon: Cpu },
+  { id: 'experience', label: 'Experience', Icon: Briefcase },
+  { id: 'education', label: 'Education', Icon: GraduationCap },
+  { id: 'contact', label: 'Contact', Icon: Mail },
 ];
 
 export const Navigation = () => {
@@ -35,20 +36,28 @@ export const Navigation = () => {
   }, []);
 
   return (
-    <div className="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-50 hidden lg:flex">
+    <div className="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-8 z-50 hidden lg:flex">
       {/* Vertical Line */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-zinc-800" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-zinc-800/50" />
       
       {navItems.map((item) => (
         <a
           key={item.id}
           href={`#${item.id}`}
           className={cn(
-            "relative w-3 h-3 rounded-full border-2 border-zinc-900 bg-zinc-800 transition-all duration-300 hover:scale-125 group",
-            activeSection === item.id && "bg-blue-500 scale-125 border-blue-500/50 shadow-[0_0_10px_rgba(59,130,246,0.5)]"
+            "relative flex items-center justify-center transition-all duration-300 group",
+            activeSection === item.id ? "w-10 h-10" : "w-10 h-3"
           )}
         >
-          <span className="absolute right-6 top-1/2 -translate-y-1/2 text-xs font-mono uppercase tracking-widest text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+          {activeSection === item.id ? (
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-500/10 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.3)] text-blue-500 animate-in zoom-in duration-300">
+               <item.Icon className="w-5 h-5" />
+            </div>
+          ) : (
+            <div className="w-2 h-2 rounded-full bg-zinc-800 border border-zinc-700 group-hover:bg-zinc-600 transition-colors" />
+          )}
+          
+          <span className="absolute right-14 top-1/2 -translate-y-1/2 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap bg-zinc-950/80 backdrop-blur-md px-3 py-1 rounded-md border border-zinc-800">
             {item.label}
           </span>
         </a>

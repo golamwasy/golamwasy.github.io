@@ -7,19 +7,19 @@ import * as THREE from 'three';
 
 const skills = [
   { name: 'Java', slug: 'java' },
-  { name: 'Spring', slug: 'spring' },
+  { name: 'Spring Boot', slug: 'spring' },
   { name: 'React', slug: 'react' },
-  { name: 'Next.js', slug: 'nextjs' },
+  { name: 'Angular', slug: 'angular' },
   { name: 'PostgreSQL', slug: 'postgresql' },
   { name: 'Docker', slug: 'docker' },
   { name: 'AWS', slug: 'amazonwebservices' },
   { name: 'Kubernetes', slug: 'kubernetes' },
   { name: 'Python', slug: 'python' },
   { name: 'TypeScript', slug: 'typescript' },
-  { name: 'Kafka', slug: 'apachekafka' },
-  { name: 'Redis', slug: 'redis' },
+  { name: 'MySQL', slug: 'mysql' },
+  { name: 'Ionic', slug: 'ionic' },
   { name: 'Git', slug: 'git' },
-  { name: 'MongoDB', slug: 'mongodb' },
+  { name: 'Flutter', slug: 'flutter' },
   { name: 'Node.js', slug: 'nodejs' },
   { name: 'Tailwind', slug: 'tailwindcss' },
 ];
@@ -80,6 +80,8 @@ function Cloud({ radius = 4.5 }) {
 }
 
 export const SkillSphere = () => {
+
+
   return (
     <div className="w-full h-[400px] md:h-[600px] cursor-grab active:cursor-grabbing relative flex items-center justify-center">
 
