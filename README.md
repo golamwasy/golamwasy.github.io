@@ -7,12 +7,13 @@ A high-fidelity, IDE-themed developer portfolio built with Next.js, TypeScript, 
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **3D Graphics**: Three.js (React Three Fiber)
-- **Deployment**: GitHub Pages (Static Export)
+- **Deployment**: Vercel (Next.js Managed)
 
 ## 🛠️ Features
 - **IDE Theme**: A dark, code-inspired aesthetic with terminal windows and grid backgrounds.
 - **Interactive Skill Universe**: A 3D interactive globe visualizing core technologies.
 - **Dynamic Navigation**: Smooth scroll-linked navigation with section tracking.
+- **Project Proxies**: Seamlessly hosting sub-projects like Planora under `/projects/planora` using Vercel Rewrites.
 - **Responsive Design**: Fully optimized for desktop and mobile viewports.
 
 ## 💻 Development
@@ -22,8 +23,8 @@ npm run dev
 ```
 
 ## 📦 Deployment
-The project is configured for static export:
-```bash
-npm run build
-```
-The output will be in the `out/` directory.
+This project is deployed on **Vercel**. 
+
+1. Push changes to `main`.
+2. Vercel automatically builds and deploys.
+3. Configure `vercel.json` for any project rewrites.
