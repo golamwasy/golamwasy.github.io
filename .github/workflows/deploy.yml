@@ -72,11 +72,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: npm ci
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build
-      - name: List files (debug)
-        run: ls -R ./out
+        run: npm run build
+      - name: Debug Workspace
+        run: |
+          echo "Current Path: $(pwd)"
+          ls -la
+          if [ -d "out" ]; then echo "OUT DIRECTORY FOUND"; ls -R out; else echo "OUT DIRECTORY NOT FOUND"; fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
