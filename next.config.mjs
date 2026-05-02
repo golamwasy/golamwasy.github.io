@@ -4,6 +4,14 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  async rewrites() {
+    return [
+      {
+        source: '/projects/planora/:path*',
+        destination: 'https://planora-rose.vercel.app/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
