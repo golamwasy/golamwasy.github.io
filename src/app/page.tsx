@@ -62,9 +62,9 @@ export default function Home() {
    if (!mounted) return <div className="min-h-screen bg-[#18181b]" />;
 
    return (
-      <main className="relative min-h-screen bg-[#18181b] selection:bg-blue-500/30 overflow-x-hidden">
+      <main className="relative min-h-screen bg-[#18181b] selection:bg-blue-500/30 overflow-x-hidden snap-y snap-mandatory scroll-smooth">
          {/* Top Center Fancy Badge */}
-         <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[200] pointer-events-none">
+         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[200] pointer-events-none">
             <div className="glass-panel px-4 py-1.5 rounded-full border-zinc-800 flex items-center gap-3 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                <div className="relative">
                   <div className="w-2 h-2 rounded-full bg-red-500 animate-ping absolute" />
@@ -83,12 +83,12 @@ export default function Home() {
          <div className="fixed inset-0 grid-background pointer-events-none z-0" />
 
          {/* Main Container */}
-         <div className="relative z-10">
-            <div className="max-w-6xl mx-auto px-6 lg:px-12 py-12">
+         <div className="relative z-10 pb-24 lg:pb-0">
+            <div className="max-w-6xl mx-auto px-6 lg:px-12 pb-6 md:pb-12">
 
                {/* 1. Hero Section */}
-               <section id="hero" className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-                  <div className="w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-16 mt-[-5vh]">
+               <section id="hero" className="relative h-screen flex flex-col items-center justify-center overflow-hidden snap-start snap-always">
+                  <div className="w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-16 mt-[-12vh]">
                      <motion.div className="flex-1 space-y-6" initial="initial" animate="animate" variants={fadeInUp}>
                         <div className="inline-flex items-center gap-3 bg-zinc-900/50 border border-zinc-800 px-4 py-1.5 rounded-md">
                            <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
@@ -96,8 +96,8 @@ export default function Home() {
                         </div>
 
                         <div className="space-y-1 text-center lg:text-left">
-                           <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight">Hello, I'm</h2>
-                           <h1 className="text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-none">
+                           <h2 className="text-2xl lg:text-5xl font-bold text-white tracking-tight">Hello, I'm</h2>
+                           <h1 className="text-5xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-none">
                               Golam Wasy
                            </h1>
                         </div>
@@ -167,11 +167,11 @@ export default function Home() {
                </section>
 
                {/* 2. About Section */}
-               <section id="about" className="min-h-screen flex flex-col justify-center py-24">
+               <section id="about" className="min-h-screen flex flex-col justify-center py-24 md:py-32 snap-start snap-always">
                   <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
                      <User className="text-blue-500 w-8 h-8" /> # about.system
                   </h2>
-                  <div className="grid lg:grid-cols-[450px_1fr] gap-12 items-start">
+                  <div className="grid lg:grid-cols-[450px_1fr] gap-16 items-start">
                      <motion.div className="glass-panel border-blue-500/20 rounded-2xl p-8 space-y-8 terminal-shadow" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
                         <div className="relative w-48 h-48 mx-auto">
                            <div className="absolute inset-0 rounded-full border-2 border-dashed border-blue-500/30 animate-rotate-slow" />
@@ -220,7 +220,7 @@ export default function Home() {
                            </div>
                         </TerminalWindow>
 
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                            {[
                               { label: 'Experience', val: '4+', unit: 'YRS', icon: Layout },
                               { label: 'Projects', val: '15+', unit: 'PRJ', icon: Code2 },
@@ -243,7 +243,7 @@ export default function Home() {
                </section>
 
                {/* 3. Skills Section */}
-               <section id="skills" className="min-h-screen flex flex-col justify-center py-24 relative">
+               <section id="skills" className="min-h-screen flex flex-col justify-center py-4 md:py-8 relative snap-start snap-always">
                   <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
                      <Cpu className="text-blue-500 w-8 h-8" /> # skills.json
                   </h2>
@@ -253,13 +253,13 @@ export default function Home() {
                </section>
 
                {/* 4. Experience Section */}
-               <section id="experience" className="min-h-screen flex flex-col justify-center py-24">
+               <section id="experience" className="min-h-[80vh] md:min-h-screen flex flex-col justify-center py-16 md:py-24 snap-start snap-always">
                   <h2 className="text-3xl font-mono mb-20 flex items-center gap-4 text-white">
                      <Briefcase className="text-blue-500 w-8 h-8" /> $ cat ~/career/experience.log
                   </h2>
 
-                  <div className="relative space-y-24">
-                     <div className="exp-line" />
+                  <div className="relative space-y-12 md:space-y-8">
+                     <div className="exp-line hidden md:block" />
 
                      {[
                         {
@@ -308,8 +308,8 @@ export default function Home() {
                            tech: ['Java', 'Spring Boot', 'Database Migration', 'AWS', 'Git']
                         }
                      ].map((exp, i) => (
-                        <motion.div key={i} className={cn("flex w-full items-center gap-12", i % 2 === 0 ? "flex-row" : "flex-row-reverse")} initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
-                           <div className="flex-1">
+                        <motion.div key={i} className={cn("flex w-full items-center gap-12", i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse", "flex-col")} initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
+                           <div className="flex-1 w-full">
                               <TerminalWindow title={`${exp.hash} HEAD -> ${exp.branch}`} className="bg-[#0b0b0d] border-zinc-800">
                                  <div className="flex justify-between items-start mb-6">
                                     <div>
@@ -334,7 +334,7 @@ export default function Home() {
                               </TerminalWindow>
                            </div>
 
-                           <div className="relative z-10">
+                           <div className="relative z-10 hidden md:block">
                               <div className="w-4 h-4 rounded-full bg-black border-2 border-blue-500 shadow-[0_0_15px_#3b82f6]" />
                               <div className={cn("absolute top-1/2 -translate-y-1/2 glass-panel px-3 py-1 rounded-full border-zinc-800 text-[10px] font-mono text-zinc-400 whitespace-nowrap flex items-center gap-2", i % 2 === 0 ? "left-8" : "right-8")}>
                                  <Search className="w-3 h-3" />
@@ -342,14 +342,24 @@ export default function Home() {
                               </div>
                            </div>
 
-                           <div className="flex-1" />
+                           <div className="flex-1 hidden md:block" />
                         </motion.div>
                      ))}
+
+                     {/* Initial Commit Milestone */}
+                     <motion.div className="flex flex-col items-center pt-24 relative" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+                        <div className="absolute top-0 h-24 left-1/2 w-px bg-zinc-800 hidden md:block" />
+
+                        <div className="relative z-10 flex items-center justify-center gap-4 bg-zinc-900/80 border border-zinc-800 px-6 py-3 rounded-full terminal-shadow">
+                           <GitBranch className="w-4 h-4 text-blue-500" />
+                           <span className="text-sm font-mono text-zinc-400 tracking-wider">Initial Commit (Hello World)</span>
+                        </div>
+                     </motion.div>
                   </div>
                </section>
 
                {/* 5. Projects Section */}
-               <section id="education" className="min-h-screen flex flex-col justify-center py-24">
+               <section id="education" className="min-h-[80vh] md:min-h-screen flex flex-col justify-center py-16 md:py-24 snap-start snap-always">
                   <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
                      <GraduationCap className="text-blue-500 w-8 h-8" /> $ ls -la ~/education
                   </h2>
@@ -391,7 +401,7 @@ export default function Home() {
                               tech: ["Data Normalization", "Anomaly Detection"]
                            },
                            {
-                              title: "B.Sc. Computer Science",
+                              title: "B.Sc. Software Engineering",
                               school: "Universiti Teknologi Malaysia",
                               period: "2018 - 2022",
                               desc: "Bachelor of Computer Science (Software Engineering). Graduated with Dean's List honors. Thesis: Data Analytics for COVID-19 Prediction.",
@@ -423,7 +433,7 @@ export default function Home() {
                </section>
 
                {/* 6. Contact Section */}
-               <section id="contact" className="pt-16 pb-8">
+               <section id="contact" className="pt-16 pb-8 snap-start snap-always">
                   <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
                      <Mail className="text-blue-500 w-8 h-8" /> ./contact.exe
                   </h2>
