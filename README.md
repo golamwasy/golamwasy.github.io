@@ -17,6 +17,7 @@ A high-fidelity, **IDE-themed** developer portfolio designed for software engine
 
 - 🖥️ **IDE-Inspired Terminal UI**: Realistic code-typing animations and JSON-structured data presentation.
 - 🌐 **Interactive 3D Skill Sphere**: A dynamic Three.js/React Three Fiber globe visualizing technical expertise, powered by Edge Config.
+- 📁 **Terminal-Styled Project Showcase**: High-fidelity project list (`tree` command) with dynamic repository status (Public/Private) and detailed cards.
 - 📬 **Secure Contact Form**: Integrated with **Web3Forms** with a server-side **Redis Message Limiter**.
 - 🛡️ **Message Limiting**: Restricts form submissions to 3 messages per 24 hours to prevent spam.
 - 🌓 **Premium Dark Aesthetic**: Custom-tuned color palette using Tailwind CSS v4 and glassmorphism.
@@ -95,7 +96,8 @@ npm run dev
 
 1. **Update Personal Data**: This portfolio is fully driven by **Vercel Edge Config**.
    - Create an Edge Config in Vercel with a key named `portfolio`.
-   - Use the schema provided in the documentation to populate your bio, experiences, and skills.
+   - The data is organized into `profile`, `skills`, `experiences`, `education`, and `projects`.
+   - Update the `projects` array to showcase your work, using the `isPublic` flag to control repository link visibility.
 2. **Message Limiting**: Set up a free Redis database (e.g., Upstash) and add the `REDIS_URL`. The system will automatically start tracking submission limits.
 3. **Contact Form**: Register at [Web3Forms](https://web3forms.com/) to get your own access key. The form uses a "Pre-check" flow to bypass Cloudflare bot protection while maintaining server-side security.
 4. **Theme**: Adjust colors in `src/app/globals.css` or the Tailwind configuration to match your branding.
