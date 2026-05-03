@@ -14,11 +14,12 @@ function getRedis() {
   return redis;
 }
 
-export async function POST(request: Request) {
+export async function POST() {
   const client = getRedis();
 
+  // If Redis is not configured, we allow the request (fail-safe)
   if (!client) {
-    return await forwardToWeb3Forms(request);
+    return NextResponse.json({ success: true, allowed: true });
   }
 
   try {
@@ -37,6 +38,7 @@ export async function POST(request: Request) {
       if (record.count >= LIMIT) {
         return NextResponse.json(
           { 
+            success: false,
             error: "Limit reached", 
             resetAt: record.resetAt 
           }, 
@@ -62,40 +64,10 @@ export async function POST(request: Request) {
       }), 'EX', WINDOW);
     }
 
-    return await forwardToWeb3Forms(request);
+    return NextResponse.json({ success: true, allowed: true });
 
   } catch (error) {
-    return await forwardToWeb3Forms(request);
-  }
-}
-
-async function forwardToWeb3Forms(request: Request) {
-  try {
-    const body = await request.json();
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        // Kept User-Agent as it's required to prevent Cloudflare from blocking the request
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-      },
-      body: JSON.stringify(body),
-    });
-
-    const contentType = response.headers.get("content-type");
-    
-    if (contentType && contentType.includes("application/json")) {
-      const result = await response.json();
-      return NextResponse.json(result, { status: response.status });
-    } else {
-      return NextResponse.json({ 
-        success: false, 
-        message: "External service error"
-      }, { status: response.status });
-    }
-  } catch (error) {
-    return NextResponse.json({ success: false, message: "Transmission failed" }, { status: 500 });
+    // Fail-safe: allow submission if Redis fails
+    return NextResponse.json({ success: true, allowed: true });
   }
 }

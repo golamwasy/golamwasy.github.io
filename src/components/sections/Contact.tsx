@@ -31,7 +31,21 @@ export function Contact() {
     setSubmitStatus("idle");
 
     try {
-      const response = await fetch("/api/send-contact", {
+      // 1. Check and increment rate limit on the server
+      const limitResponse = await fetch("/api/send-contact", {
+        method: "POST",
+      });
+
+      if (limitResponse.status === 429) {
+        const result = await limitResponse.json();
+        setResetAt(result.resetAt);
+        setSubmitStatus("rate-limit");
+        return;
+      }
+
+      // 2. If allowed, submit directly from the browser to Web3Forms
+      // This bypasses Cloudflare server-side blocks
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,15 +60,8 @@ export function Contact() {
         }),
       });
 
-      if (response.status === 429) {
-        const result = await response.json();
-        setResetAt(result.resetAt);
-        setSubmitStatus("rate-limit");
-        return;
-      }
-
       const result = await response.json();
-      if (result.success || response.ok) {
+      if (result.success) {
         setSubmitStatus("success");
         setFormState({ subject: "", email: "", message: "", honeypot: "" });
       } else {
