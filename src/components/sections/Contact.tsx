@@ -75,10 +75,10 @@ export function Contact() {
   };
 
   return (
-    <Section 
-      id="contact" 
-      fullHeight={true} 
-      className="pt-20 pb-4" 
+    <Section
+      id="contact"
+      fullHeight={true}
+      className="pt-20 pb-4"
       containerClassName="min-h-[calc(100vh-6rem)] flex flex-col justify-between"
     >
       <div className="flex-1 flex flex-col justify-center">
@@ -209,7 +209,7 @@ export function Contact() {
                 >
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
-                    [LIMIT] Security policy: Rate limit reached.
+                    [LIMIT] Security policy: Message limit reached.
                   </div>
                   <div className="pl-3.5 text-[9px] text-yellow-500/70">
                     Transmission allowed after: {resetAt ? new Date(resetAt * 1000).toLocaleString(undefined, {
