@@ -7,24 +7,27 @@ interface Token {
 }
 
 const codeTokens: Token[] = [
-  { text: "// My workspace\n", color: "text-zinc-600" },
+  { text: "// Welcome to my workspace\n", color: "text-rose-400" },
   { text: "import ", color: "text-purple-400" },
   { text: "{ ", color: "text-zinc-300" },
-  { text: "Developer ", color: "text-blue-300" },
+  { text: "Developer ", color: "text-orange-400" },
   { text: "} ", color: "text-zinc-300" },
   { text: "from ", color: "text-purple-400" },
   { text: "'./universe'", color: "text-green-400" },
   { text: ";\n\n", color: "text-zinc-300" },
   { text: "const ", color: "text-purple-400" },
-  { text: "Portfolio ", color: "text-yellow-200" },
+  { text: "Portfolio ", color: "text-yellow-400" },
   { text: "= () => {\n", color: "text-zinc-300" },
   { text: "  return (\n", color: "text-zinc-300" },
-  { text: "    <Developer\n", color: "text-blue-300" },
-  { text: "      name=", color: "text-zinc-400" },
+  { text: "    <", color: "text-rose-400" },
+  { text: "Developer", color: "text-orange-400" },
+  { text: "\n      name=", color: "text-orange-400" },
   { text: "\"Golam Wasy\"", color: "text-green-400" },
-  { text: "\n      role=", color: "text-zinc-400" },
-  { text: "\"Software Engineer\"", color: "text-green-400" },
-  { text: "\n    />\n", color: "text-blue-300" },
+  { text: "\n      role=", color: "text-orange-400" },
+  { text: "\"Full Stack Engineer\"", color: "text-green-400" },
+  { text: "\n      passion=", color: "text-orange-400" },
+  { text: "\"Engineering Beyond Boundaries\"", color: "text-green-400" },
+  { text: "\n    />\n", color: "text-rose-400" },
   { text: "  );\n", color: "text-zinc-300" },
   { text: "};", color: "text-zinc-300" },
 ];
@@ -37,7 +40,7 @@ export const TypingCode = () => {
   useEffect(() => {
     if (currentTokenIndex < codeTokens.length) {
       const currentToken = codeTokens[currentTokenIndex];
-      
+
       if (currentCharIndex < currentToken.text.length) {
         const timeout = setTimeout(() => {
           setCurrentCharIndex(prev => prev + 1);
@@ -46,7 +49,7 @@ export const TypingCode = () => {
       } else {
         // Token finished, move to next
         setDisplayedTokens(prev => [
-          ...prev, 
+          ...prev,
           { text: currentToken.text, color: currentToken.color }
         ]);
         setCurrentTokenIndex(prev => prev + 1);

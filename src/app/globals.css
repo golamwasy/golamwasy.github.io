@@ -69,6 +69,24 @@ body {
 }
 .animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
 
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+
+@keyframes spin-slow-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+.animate-spin-slow-reverse { animation: spin-slow-reverse 12s linear infinite; }
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+.animate-scanline { animation: scanline 4s linear infinite; }
+
 /* Custom Utilities */
 .glass-panel {
   background: rgba(30, 30, 36, 0.85);

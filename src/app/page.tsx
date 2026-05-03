@@ -21,7 +21,7 @@ import {
    GitBranch,
    ExternalLink,
    Monitor,
-   Search, Heart, Briefcase, GraduationCap, User, Cpu
+   Search, Heart, Briefcase, GraduationCap, User, Cpu, CodeXml
 } from "lucide-react";
 import { TerminalWindow } from "@/components/TerminalWindow";
 import { TypingCode } from "@/components/TypingCode";
@@ -91,48 +91,55 @@ export default function Home() {
                <section id="hero" className="relative h-screen flex flex-col items-center justify-center overflow-hidden snap-start snap-always">
                   <div className="w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-16 mt-[-12vh]">
                      <motion.div className="flex-1 space-y-6" initial="initial" animate="animate" variants={fadeInUp}>
+                        <div className="absolute -top-12 -right-4 hidden lg:block opacity-20 font-mono text-[10px] text-zinc-400">
+                           {"<System.Init />"}
+                        </div>
+
                         <div className="inline-flex items-center gap-3 bg-zinc-900/50 border border-zinc-800 px-4 py-1.5 rounded-md">
                            <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
                            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">System.Kernel :: v2.5.0 Online</span>
                         </div>
 
                         <div className="space-y-2 text-center lg:text-left">
-                           <h2 className="text-3xl lg:text-6xl font-bold text-white tracking-tight">Hello, I'm</h2>
-                           <h1 className="text-6xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-none">
+                           <h2 className="text-2xl lg:text-5xl font-bold text-white tracking-tight">Hello, I'm</h2>
+                           <h1 className="text-5xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-none">
                               Golam Wasy
                            </h1>
                         </div>
 
-                        <p className="text-xl text-zinc-400 font-mono leading-relaxed max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
-                           <span className="text-blue-500">{"<Software Engineer />"}</span> Engineering Beyond Boundaries. Specializing in scalable backend architectures and distributed systems.
+                        <p className="text-lg text-zinc-400 font-mono leading-relaxed max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
+                           <span className="text-blue-500">{"<Full Stack Engineer />"}</span> Engineering Beyond Boundaries. Specializing in scalable backend architectures and distributed systems.
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start">
                            {/* OS Init Progress */}
-                           <div className="flex-1 min-w-[320px] glass-panel rounded-xl p-4 border-blue-500/20 flex items-center gap-5">
-                              <TerminalIcon className="w-6 h-6 text-blue-500" />
-                              <div className="flex-1 space-y-2">
-                                 <div className="flex justify-between text-[9px] font-mono uppercase text-zinc-500">
+                           <div className="flex-1 min-w-[280px] glass-panel rounded-xl p-3 border-blue-500/20 flex items-center gap-4">
+                              <TerminalIcon className="w-5 h-5 text-blue-500" />
+                              <div className="flex-1 space-y-1.5">
+                                 <div className="flex justify-between text-[8px] font-mono uppercase text-zinc-500">
                                     <span>Initialize OS</span>
                                     <span>loading...</span>
                                  </div>
                                  <div className="w-full h-1 bg-zinc-800 rounded-full overflow-hidden">
                                     <div className="h-full bg-blue-500 animate-progress" />
                                  </div>
-                                 <div className="text-[9px] font-mono text-zinc-600 truncate">
+                                 <div className="text-[8px] font-mono text-zinc-600 truncate">
                                     {">"} sudo boot_gui --user arn0b
                                  </div>
                               </div>
                            </div>
-                           <a href="https://github.com/golamwasy" target="_blank" className="bg-zinc-900 border border-zinc-800 p-4 rounded-xl flex flex-col items-center justify-center gap-2 group hover:border-blue-500/50 transition-all shadow-lg">
-                              <GithubLogo className="w-6 h-6 text-zinc-400 group-hover:text-white transition-colors" />
-                              <span className="text-[9px] font-mono uppercase text-zinc-500">Github</span>
-                           </a>
+                        </div>
+
+                        <div className="flex items-center gap-3 pt-4">
+                           <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">Loaded_Modules:</span>
+                           {['React', 'Next.js', 'Node.js', 'TypeScript', 'Java', 'Spring'].map(mod => (
+                              <span key={mod} className="text-[8px] font-mono px-2 py-0.5 bg-zinc-900/50 border border-zinc-800 text-blue-500/70 rounded uppercase">{mod}</span>
+                           ))}
                         </div>
                      </motion.div>
 
-                     <motion.div className="flex-1 w-full max-w-lg lg:max-w-2xl" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-                        <TerminalWindow title="portfolio.tsx" className="terminal-shadow border-blue-500/20 scale-95 lg:scale-105 origin-center lg:origin-right">
+                     <motion.div className="flex-1 w-full max-w-lg lg:max-w-xl" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+                        <TerminalWindow title="portfolio.tsx" className="terminal-shadow border-blue-500/20 scale-90 lg:scale-95 origin-center lg:origin-right">
                            <TypingCode />
                         </TerminalWindow>
                      </motion.div>
@@ -151,76 +158,116 @@ export default function Home() {
                </section>
 
                {/* 2. About Section */}
-               <section id="about" className="min-h-fit flex flex-col justify-center py-8 md:py-16 snap-start snap-always">
-                  <h2 className="text-2xl font-mono mb-8 flex items-center gap-4 text-white">
-                     <User className="text-blue-500 w-8 h-8" /> # about.system
-                  </h2>
-                  <div className="grid lg:grid-cols-[450px_1fr] gap-16 items-start">
-                     <motion.div className="glass-panel border-blue-500/20 rounded-2xl p-8 space-y-8 terminal-shadow" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
-                        <div className="relative w-48 h-48 mx-auto">
-                           <div className="absolute inset-0 rounded-full border-2 border-dashed border-blue-500/30 animate-rotate-slow" />
-                           <div className="absolute -inset-2 rounded-full border border-blue-500/10" />
-                           <img src="/myself.jpg" className="w-full h-full rounded-full object-cover p-2 border border-zinc-800 transition-all duration-500" />
-                           <div className="absolute bottom-4 right-4 w-4 h-4 bg-green-500 rounded-full border-4 border-black" />
-                        </div>
-
-                        <div className="space-y-4 font-mono text-[11px] uppercase tracking-wider">
-                           <div className="flex justify-between border-b border-zinc-900 pb-2">
-                              <span className="text-zinc-500">Operator</span>
-                              <span className="text-blue-500 font-bold">Golam Wasy Arnob</span>
-                           </div>
-                           <div className="flex justify-between border-b border-zinc-900 pb-2">
-                              <span className="text-zinc-500">Role</span>
-                              <span className="text-blue-300">Software_Engineer</span>
-                           </div>
-                           <div className="flex justify-between border-b border-zinc-900 pb-2">
-                              <span className="text-zinc-500">Location</span>
-                              <span className="text-zinc-300">Helsinki, Finland</span>
-                           </div>
-                           <div className="flex justify-between">
-                              <span className="text-zinc-500">Status</span>
-                              <span className="bg-green-500/10 text-green-500 px-2 py-0.5 rounded border border-green-500/20">Active</span>
-                           </div>
-                        </div>
+               <section id="about" className="min-h-screen flex items-center py-20 px-6 lg:px-12 relative snap-start snap-always">
+                  <div className="max-w-6xl mx-auto w-full">
+                     <motion.div
+                        className="flex items-center gap-4 mb-12"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                     >
+                        <TerminalIcon className="w-6 h-6 text-blue-500" />
+                        <h2 className="font-mono text-2xl lg:text-3xl font-bold">
+                           <span className="text-zinc-500">#</span> About.system
+                        </h2>
                      </motion.div>
 
-                     <div className="space-y-8">
-                        <TerminalWindow title="user_profile.log" className="bg-[#0b0b0d]">
-                           <div className="space-y-4 font-mono text-sm leading-relaxed">
-                              <div className="flex gap-2 text-purple-400">
-                                 <span>{"->"}</span>
-                                 <span>whoami</span>
+                     <div className="grid lg:grid-cols-2 gap-16 items-start">
+                        <motion.div
+                           className="relative group"
+                           initial={{ opacity: 0, y: 20 }}
+                           whileInView={{ opacity: 1, y: 0 }}
+                           viewport={{ once: true }}
+                        >
+                           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                           <div className="relative bg-[#1e1e1e] border border-blue-500/30 rounded-2xl p-6 lg:p-10 overflow-hidden">
+                              <div className="relative w-48 h-48 mx-auto mb-8">
+                                 <div className="absolute inset-0 rounded-full border-2 border-dashed border-blue-500/30 animate-rotate-slow" />
+                                 <div className="absolute -inset-2 rounded-full border border-blue-500/10" />
+                                 <div className="absolute inset-4 rounded-full overflow-hidden bg-zinc-900 border border-zinc-800 shadow-inner">
+                                    <img
+                                       src="/myself.jpg"
+                                       alt="System Avatar"
+                                       className="w-full h-full object-cover"
+                                    />
+                                 </div>
+                                 <div className="absolute bottom-4 right-4 w-4 h-4 bg-green-500 rounded-full border-2 border-[#1e1e1e] animate-pulse" />
                               </div>
-                              <p className="text-zinc-400 pl-6">
-                                 Software Engineer with a mix of deep-dive research and hands-on building. From analyzing telecom data at the University of Helsinki to architecting enterprise-grade APIs, I focus on building robust features and modernizing high-availability systems with a focus on customer needs.
-                              </p>
-                              <div className="flex gap-2 text-purple-400">
-                                 <span>{"->"}</span>
-                                 <span>cat mission.txt</span>
-                              </div>
-                              <p className="text-zinc-400 pl-6">
-                                 Translating complex business requirements into robust technical solutions. Experienced in <span className="text-white">AWS</span>, <span className="text-white">Docker</span>, <span className="text-white">Kubernetes</span>, and full-stack development using <span className="text-white">Spring Boot</span> and <span className="text-white">React/Angular</span>.
-                              </p>
-                           </div>
-                        </TerminalWindow>
 
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                           {[
-                              { label: 'Experience', val: '4+', unit: 'YRS', icon: Layout },
-                              { label: 'Projects', val: '15+', unit: 'PRJ', icon: Code2 },
-                              { label: 'Hackathons', val: '1', unit: 'WIN', icon: Coffee },
-                           ].map((stat) => (
-                              <div key={stat.label} className="bg-zinc-900/50 border border-zinc-800 p-4 rounded-xl flex flex-col gap-2">
-                                 <div className="flex items-center gap-2 text-blue-500">
-                                    <stat.icon className="w-4 h-4" />
-                                    <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">{stat.label}</span>
+                              <div className="font-mono text-sm space-y-3">
+                                 <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                                    <span className="text-zinc-500">OPERATOR</span>
+                                    <span className="text-blue-500 font-bold tracking-widest uppercase">Golam Wasy</span>
                                  </div>
-                                 <div className="flex items-baseline gap-1">
-                                    <span className="text-2xl font-bold text-white">{stat.val}</span>
-                                    <span className="text-[10px] font-mono text-zinc-600">{stat.unit}</span>
+                                 <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                                    <span className="text-zinc-500">ROLE</span>
+                                    <span className="text-blue-400 uppercase">Full_Stack_Engineer</span>
+                                 </div>
+                                 <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                                    <span className="text-zinc-500">LOCATION</span>
+                                    <span className="text-white uppercase">Helsinki, Finland</span>
+                                 </div>
+                                 <div className="flex justify-between items-center pb-2">
+                                    <span className="text-zinc-500">STATUS</span>
+                                    <span className="bg-green-500/10 text-green-400 px-2 py-0.5 rounded text-xs border border-green-500/20">ACTIVE</span>
                                  </div>
                               </div>
-                           ))}
+                           </div>
+                        </motion.div>
+
+                        <div className="space-y-8">
+                           <motion.div
+                              className="bg-[#1e1e1e] rounded-lg border border-zinc-800 font-mono text-sm shadow-xl overflow-hidden group hover:border-blue-500/30 transition-colors"
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: 0.2 }}
+                           >
+                              <div className="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-zinc-800">
+                                 <TerminalIcon className="w-3.5 h-3.5 text-zinc-400" />
+                                 <span className="text-zinc-400 text-xs">user_profile.log</span>
+                              </div>
+                              <div className="p-6 text-zinc-300 leading-relaxed space-y-4">
+                                 <p><span className="text-blue-400">➜</span> <span className="text-purple-400">whoami</span></p>
+                                 <p className="pl-4 border-l-2 border-white/10">
+                                    Software Engineer with a mix of deep-dive research and hands-on building. From analyzing telecom data at the University of Helsinki to architecting enterprise-grade APIs, I focus on building robust features and modernizing high-availability systems with a focus on customer needs.
+                                 </p>
+                                 <p><span className="text-blue-400">➜</span> <span className="text-purple-400">cat</span> mission.txt</p>
+                                 <p className="pl-4 border-l-2 border-white/10 text-zinc-400">
+                                    Translating complex business requirements into robust technical solutions. Experienced in <span className="text-white">AWS</span>, <span className="text-white">Docker</span>, <span className="text-white">Kubernetes</span>, and full-stack development using <span className="text-white">Spring Boot</span> and <span className="text-white">React/Angular</span>.
+                                 </p>
+                              </div>
+                           </motion.div>
+
+                           <motion.div
+                              className="grid grid-cols-3 gap-4"
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: 0.4 }}
+                           >
+                              <div className="bg-[#1e1e1e] p-4 rounded-lg border border-zinc-800 hover:border-blue-500/30 transition-all group">
+                                 <div className="flex items-center gap-2 mb-2">
+                                    <Cpu className="w-4 h-4 text-blue-500" />
+                                    <span className="text-[10px] text-zinc-500 font-mono">EXPERIENCE</span>
+                                 </div>
+                                 <div className="text-xl font-bold text-white font-mono group-hover:text-blue-500 transition-colors">4+ <span className="text-[10px] text-zinc-600">YRS</span></div>
+                              </div>
+                              <div className="bg-[#1e1e1e] p-4 rounded-lg border border-zinc-800 hover:border-blue-500/30 transition-all group">
+                                 <div className="flex items-center gap-2 mb-2">
+                                    <CodeXml className="w-4 h-4 text-blue-400" />
+                                    <span className="text-[10px] text-zinc-500 font-mono">PROJECTS</span>
+                                 </div>
+                                 <div className="text-xl font-bold text-white font-mono group-hover:text-blue-400 transition-colors">15+ <span className="text-[10px] text-zinc-600">PRJ</span></div>
+                              </div>
+                              <div className="bg-[#1e1e1e] p-4 rounded-lg border border-zinc-800 hover:border-blue-500/30 transition-all group">
+                                 <div className="flex items-center gap-2 mb-2">
+                                    <Coffee className="w-4 h-4 text-blue-500" />
+                                    <span className="text-[10px] text-zinc-500 font-mono">HACKATHONS</span>
+                                 </div>
+                                 <div className="text-xl font-bold text-white font-mono group-hover:text-blue-500 transition-colors">1 <span className="text-[10px] text-zinc-600">WIN</span></div>
+                              </div>
+                           </motion.div>
                         </div>
                      </div>
                   </div>
@@ -329,17 +376,17 @@ export default function Home() {
                            <div className="flex-1 hidden md:block" />
                         </motion.div>
                      ))}
-
-                     {/* Initial Commit Milestone */}
-                   <motion.div className="flex flex-col items-center pt-8 relative" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-                        <div className="absolute top-0 h-24 left-1/2 w-px bg-zinc-800 hidden md:block" />
-
-                        <div className="relative z-10 flex items-center justify-center gap-4 bg-zinc-900/80 border border-zinc-800 px-6 py-3 rounded-full terminal-shadow">
-                           <GitBranch className="w-4 h-4 text-blue-500" />
-                           <span className="text-sm font-mono text-zinc-400 tracking-wider">Initial Commit (Hello World)</span>
-                        </div>
-                     </motion.div>
                   </div>
+
+                  {/* Initial Commit Milestone */}
+                  <motion.div className="flex flex-col items-center pt-8 relative mt-8 md:mt-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+                     <div className="absolute top-0 h-8 left-1/2 w-px bg-zinc-800 hidden md:block" />
+
+                     <div className="relative z-10 flex items-center justify-center gap-4 bg-zinc-900 border border-zinc-800 px-6 py-3 rounded-full terminal-shadow">
+                        <GitBranch className="w-4 h-4 text-blue-500" />
+                        <span className="text-sm font-mono text-zinc-400 tracking-wider">Initial Commit (Hello World)</span>
+                     </div>
+                  </motion.div>
                </section>
 
                {/* 5. Education Section */}
@@ -397,14 +444,47 @@ export default function Home() {
                      <Mail className="text-blue-500 w-8 h-8" /> ./contact.exe
                   </h2>
                   <div className="grid lg:grid-cols-2 gap-8">
-                     <TerminalWindow title="contact.json" className="bg-[#0b0b0d] border-zinc-800">
-                        <div className="space-y-1 font-mono text-sm">
-                           <div>{"{"}</div>
-                           <div className="pl-4"><span className="text-red-400">"email"</span>: <span className="text-green-400">"golamwasy@gmail.com"</span>,</div>
-                           <div className="pl-4"><span className="text-red-400">"phone"</span>: <span className="text-green-400">"+358 44 246 1728"</span>,</div>
-                           <div className="pl-4"><span className="text-red-400">"linkedin"</span>: <span className="text-green-400">"linkedin.com/in/golamwasy"</span>,</div>
-                           <div className="pl-4"><span className="text-red-400">"location"</span>: <span className="text-green-400">"Helsinki, Finland"</span></div>
-                           <div>{"}"}</div>
+                     <TerminalWindow title="contact_info.json" className="bg-[#0b0b0d] border-zinc-800 shadow-2xl shadow-blue-500/5">
+                        <div className="flex font-mono text-sm leading-relaxed min-h-[320px]">
+                           {/* Line Numbers */}
+                           <div className="flex flex-col text-zinc-700 pr-4 text-right select-none border-r border-zinc-800/50 mr-4">
+                              {Array.from({ length: 14 }).map((_, i) => (
+                                 <span key={i}>{i + 1}</span>
+                              ))}
+                           </div>
+
+                           {/* Content */}
+                           <div className="flex-1">
+                              <div className="space-y-0.5">
+                                 <div><span className="text-orange-300">{"{"}</span></div>
+                                 <div className="pl-4">
+                                    <span className="text-red-400">"status"</span><span className="text-orange-300">:</span> <span className="text-green-400">"available_for_opportunities"</span><span className="text-orange-300">,</span>
+                                 </div>
+                                 <div className="pl-4">
+                                    <span className="text-red-400">"email"</span><span className="text-orange-300">:</span> <span className="text-green-400">"golamwasy@gmail.com"</span><span className="text-orange-300">,</span>
+                                 </div>
+                                 <div className="pl-4">
+                                    <span className="text-red-400">"socials"</span><span className="text-orange-300">:</span> <span className="text-orange-300">{"{"}</span>
+                                 </div>
+                                 <div className="pl-8">
+                                    <span className="text-red-400">"github"</span><span className="text-orange-300">:</span> <span className="text-green-400">"@golamwasy"</span><span className="text-orange-300">,</span>
+                                 </div>
+                                 <div className="pl-8">
+                                    <span className="text-red-400">"linkedin"</span><span className="text-orange-300">:</span> <span className="text-green-400">"@golamwasy"</span>
+                                 </div>
+                                 <div className="pl-4"><span className="text-orange-300">{"}"}</span><span className="text-orange-300">,</span></div>
+                                 <div className="pl-4">
+                                    <span className="text-red-400">"location"</span><span className="text-orange-300">:</span> <span className="text-green-400">"Helsinki, Finland"</span>
+                                 </div>
+                                 <div><span className="text-orange-300">{"}"}</span></div>
+
+                                 <div className="pt-8 text-zinc-600 italic">// Waiting for connection...</div>
+                                 <div className="flex items-center gap-2 mt-2">
+                                    <span className="text-blue-500">➜</span>
+                                    <span className="w-2 h-4 bg-blue-500/50 animate-pulse" />
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </TerminalWindow>
                      <TerminalWindow title="send_message.sh" className="bg-[#0b0b0d] border-zinc-800">
@@ -433,7 +513,7 @@ export default function Home() {
                   </div>
                   <div className="space-y-4">
                      <div className="flex flex-col items-center gap-1">
-                        <h4 className="font-bold text-zinc-300 text-lg">Golam Wasy | <span className="text-blue-500 font-mono text-sm">Software Engineer</span></h4>
+                        <h4 className="font-bold text-zinc-300 text-lg">Golam Wasy | <span className="text-blue-500 font-mono text-sm">Full Stack Engineer</span></h4>
                         <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest flex items-center justify-center gap-2">
                            Built with <Heart className="w-3 h-3 text-red-500/60" /> using Next.js, TypeScript {"&"} Tailwind
                         </p>
