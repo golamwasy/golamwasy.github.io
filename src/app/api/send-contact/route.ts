@@ -9,7 +9,22 @@ let redis: Redis | null = null;
 
 function getRedis() {
   if (!redis && process.env.REDIS_URL) {
-    redis = new Redis(process.env.REDIS_URL);
+    try {
+      // Use WHATWG URL API to avoid the deprecated url.parse() warning
+      const url = new URL(process.env.REDIS_URL);
+      redis = new Redis({
+        host: url.hostname,
+        port: parseInt(url.port || '6379'),
+        username: url.username || undefined,
+        password: url.password || undefined,
+        db: parseInt(url.pathname.replace('/', '') || '0'),
+        // Automatically handle TLS if the protocol is rediss://
+        tls: url.protocol === 'rediss:' ? {} : undefined,
+      });
+    } catch (e) {
+      // Fallback to string if URL parsing fails
+      redis = new Redis(process.env.REDIS_URL);
+    }
   }
   return redis;
 }
@@ -17,7 +32,6 @@ function getRedis() {
 export async function POST() {
   const client = getRedis();
 
-  // If Redis is not configured, we allow the request (fail-safe)
   if (!client) {
     return NextResponse.json({ success: true, allowed: true });
   }
@@ -67,7 +81,6 @@ export async function POST() {
     return NextResponse.json({ success: true, allowed: true });
 
   } catch (error) {
-    // Fail-safe: allow submission if Redis fails
     return NextResponse.json({ success: true, allowed: true });
   }
 }
