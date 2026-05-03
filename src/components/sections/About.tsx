@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Terminal as TerminalIcon, Cpu, CodeXml, Coffee } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { PROFILE } from "@/lib/data";
+import { usePortfolio } from "@/lib/context";
 
 const iconMap = {
   Cpu: Cpu,
@@ -12,6 +12,7 @@ const iconMap = {
 };
 
 export function About() {
+  const { profile: PROFILE } = usePortfolio();
   return (
     <Section id="about">
       <SectionHeading icon={TerminalIcon} title="About.system" />

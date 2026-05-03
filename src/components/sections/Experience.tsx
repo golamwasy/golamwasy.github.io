@@ -4,7 +4,8 @@ import { Briefcase, Search, GitBranch } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TerminalWindow } from "@/components/TerminalWindow";
-import { EXPERIENCES, Experience as ExperienceType } from "@/lib/data";
+import { usePortfolio } from "@/lib/context";
+import { Experience as ExperienceType } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const fadeInUp = {
@@ -68,6 +69,7 @@ function ExperienceItem({ exp, index }: { exp: ExperienceType; index: number }) 
 }
 
 export function Experience() {
+  const { experiences: EXPERIENCES } = usePortfolio();
   return (
     <Section id="experience" fullHeight={false} className="py-12 md:py-20">
       <SectionHeading icon={Briefcase} title="cat ~/career/experience.log" prefix="$" />

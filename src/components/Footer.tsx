@@ -1,9 +1,10 @@
 import React from "react";
 import { Terminal as TerminalIcon, Heart } from "lucide-react";
-import { PROFILE } from "@/lib/data";
+import { usePortfolio } from "@/lib/context";
 import { cn } from "@/lib/utils";
 
 export function Footer({ className }: { className?: string }) {
+  const { profile: PROFILE } = usePortfolio();
   return (
     <footer className={cn("py-12 border-t border-zinc-900 text-center space-y-6", className)}>
       <div className="flex items-center justify-center gap-4">

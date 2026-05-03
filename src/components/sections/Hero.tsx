@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Terminal as TerminalIcon, ChevronRight } from "lucide-react";
 import { TerminalWindow } from "@/components/TerminalWindow";
 import { TypingCode } from "@/components/TypingCode";
-import { PROFILE } from "@/lib/data";
+import { usePortfolio } from "@/lib/context";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -12,6 +12,7 @@ const fadeInUp = {
 };
 
 export function Hero() {
+  const { profile: PROFILE } = usePortfolio();
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };

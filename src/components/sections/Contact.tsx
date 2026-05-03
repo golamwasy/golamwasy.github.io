@@ -4,10 +4,11 @@ import { Mail, Send } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TerminalWindow } from "@/components/TerminalWindow";
-import { PROFILE } from "@/lib/data";
+import { usePortfolio } from "@/lib/context";
 import { Footer } from "@/components/Footer";
 
 export function Contact() {
+  const { profile: PROFILE } = usePortfolio();
   const [formState, setFormState] = useState({
     subject: "",
     email: "",

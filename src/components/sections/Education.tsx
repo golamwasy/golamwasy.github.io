@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { GraduationCap, FileCode, MapPin, ExternalLink } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { EDUCATION, Education as EducationType } from "@/lib/data";
+import { usePortfolio } from "@/lib/context";
+import { Education as EducationType } from "@/lib/data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -42,6 +43,7 @@ function EducationItem({ item }: { item: EducationType }) {
 }
 
 export function Education() {
+  const { education: EDUCATION } = usePortfolio();
   return (
     <Section id="education" fullHeight={false} className="py-12 md:py-20">
       <SectionHeading icon={GraduationCap} title="ls -la ~/education" prefix="$" />
