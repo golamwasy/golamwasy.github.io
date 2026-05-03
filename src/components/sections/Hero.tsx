@@ -32,13 +32,13 @@ export function Hero() {
 
           <div className="space-y-2 text-center lg:text-left">
             <h2 className="text-xl md:text-3xl lg:text-5xl font-bold text-white tracking-tight">Hello, I'm</h2>
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-[1.1]">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-[1.1] whitespace-nowrap">
               {PROFILE.name}
             </h1>
           </div>
 
           <p className="text-base md:text-lg text-zinc-400 font-mono leading-relaxed max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
-            <span className="text-blue-500">{`<${PROFILE.role} />`}</span> Backend-first, full-stack capable. Building reliable systems and tools people actually rely on.
+            <span className="text-blue-500">{`<${PROFILE.role} />`}</span> {PROFILE.roleLine}
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start">

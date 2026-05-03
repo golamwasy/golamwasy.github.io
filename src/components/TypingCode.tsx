@@ -30,7 +30,7 @@ export const TypingCode = () => {
     { text: "\n      role=", color: "text-orange-400" },
     { text: `"${profile.role}"`, color: "text-green-400" },
     { text: "\n      passion=", color: "text-orange-400" },
-    { text: "\"Where research meets real-world engineering\"", color: "text-green-400" },
+    { text: `"${profile.tagline}"`, color: "text-green-400" },
     { text: "\n    />\n", color: "text-rose-400" },
     { text: "  );\n", color: "text-zinc-300" },
     { text: "};", color: "text-zinc-300" },

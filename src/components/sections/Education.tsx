@@ -27,16 +27,15 @@ function EducationItem({ item }: { item: EducationType }) {
         <span className="text-[10px] ml-auto border border-zinc-800 px-1.5 py-0.5 rounded text-zinc-500 font-mono uppercase">Certified</span>
       </div>
       <p className="text-sm text-zinc-400 mb-6 leading-relaxed">
-        {item.desc}
+        <span className="font-bold text-zinc-300">Thesis:</span> {item.desc}
       </p>
       <div className="flex flex-wrap gap-2 mb-6">
         {item.tech.map(t => (
           <span key={t} className="text-[10px] font-mono px-2 py-0.5 bg-zinc-900 text-zinc-500 rounded border border-zinc-800">{t}</span>
         ))}
       </div>
-      <div className="flex justify-between items-center text-[10px] font-mono text-zinc-600 pt-4 border-t border-zinc-900">
-        <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {item.school}</span>
-        <span className="flex items-center gap-1 hover:text-blue-400 cursor-pointer">Verify <ExternalLink className="w-3 h-3" /></span>
+      <div className="flex justify-between items-center text-[10px] font-mono pt-4 border-t border-zinc-900">
+        <span className="flex items-center gap-1 font-bold text-white"><MapPin className="w-3 h-3 text-zinc-600" /> {item.school}</span>
       </div>
     </motion.div>
   );

@@ -5,25 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Html, TrackballControls, Icosahedron } from '@react-three/drei';
 import * as THREE from 'three';
 import { cn } from '@/lib/utils';
-
-const skills = [
-  { name: 'Java', slug: 'java' },
-  { name: 'Spring Boot', slug: 'spring' },
-  { name: 'React', slug: 'react' },
-  { name: 'Angular', slug: 'angular' },
-  { name: 'PostgreSQL', slug: 'postgresql' },
-  { name: 'Docker', slug: 'docker' },
-  { name: 'AWS', slug: 'amazonwebservices' },
-  { name: 'Kubernetes', slug: 'kubernetes' },
-  { name: 'Python', slug: 'python' },
-  { name: 'TypeScript', slug: 'typescript' },
-  { name: 'MySQL', slug: 'mysql' },
-  { name: 'Ionic', slug: 'ionic' },
-  { name: 'Git', slug: 'git' },
-  { name: 'Flutter', slug: 'flutter' },
-  { name: 'Node.js', slug: 'nodejs' },
-  { name: 'Tailwind', slug: 'tailwindcss' },
-];
+import { usePortfolio } from '@/lib/context';
 
 function SkillIcon({ skill, position, isMobile }: { skill: any; position: THREE.Vector3; isMobile: boolean }) {
   return (
@@ -49,7 +31,7 @@ function SkillIcon({ skill, position, isMobile }: { skill: any; position: THREE.
   );
 }
 
-function Cloud({ radius = 4.5, isMobile = false }: { radius?: number; isMobile?: boolean }) {
+function Cloud({ radius = 4.5, isMobile = false, skills }: { radius?: number; isMobile?: boolean; skills: any[] }) {
   const words = useMemo(() => {
     const temp = [];
     const count = skills.length;
@@ -60,7 +42,7 @@ function Cloud({ radius = 4.5, isMobile = false }: { radius?: number; isMobile?:
       temp.push([pos, skills[i]]);
     }
     return temp;
-  }, [radius]);
+  }, [radius, skills]);
 
   const groupRef = useRef<THREE.Group>(null);
 
@@ -90,6 +72,7 @@ function Cloud({ radius = 4.5, isMobile = false }: { radius?: number; isMobile?:
 }
 
 export const SkillSphere = () => {
+  const { skills } = usePortfolio();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -115,7 +98,7 @@ export const SkillSphere = () => {
       <div className="w-full h-full max-w-[800px] relative z-10">
         <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 15], fov: 45 }} gl={{ alpha: true }}>
           <ambientLight intensity={3} />
-          <Cloud radius={radius} isMobile={isMobile} />
+          <Cloud radius={radius} isMobile={isMobile} skills={skills} />
           <TrackballControls
             noPan
             noZoom
