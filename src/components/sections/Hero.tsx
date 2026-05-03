@@ -38,7 +38,7 @@ export function Hero() {
           </div>
 
           <p className="text-base md:text-lg text-zinc-400 font-mono leading-relaxed max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
-            <span className="text-blue-500">{`<${PROFILE.role} />`}</span> Engineering Beyond Boundaries. Specializing in scalable backend architectures and distributed systems.
+            <span className="text-blue-500">{`<${PROFILE.role} />`}</span> Backend-first, full-stack capable. Building reliable systems and tools people actually rely on.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start">

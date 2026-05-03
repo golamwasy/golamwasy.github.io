@@ -9,7 +9,7 @@ interface Token {
 
 export const TypingCode = () => {
   const { profile } = usePortfolio();
-  
+
   const codeTokens: Token[] = [
     { text: "// Welcome to my workspace\n", color: "text-rose-400" },
     { text: "import ", color: "text-purple-400" },
@@ -30,7 +30,7 @@ export const TypingCode = () => {
     { text: "\n      role=", color: "text-orange-400" },
     { text: `"${profile.role}"`, color: "text-green-400" },
     { text: "\n      passion=", color: "text-orange-400" },
-    { text: "\"Engineering Beyond Boundaries\"", color: "text-green-400" },
+    { text: "\"Where research meets real-world engineering\"", color: "text-green-400" },
     { text: "\n    />\n", color: "text-rose-400" },
     { text: "  );\n", color: "text-zinc-300" },
     { text: "};", color: "text-zinc-300" },
