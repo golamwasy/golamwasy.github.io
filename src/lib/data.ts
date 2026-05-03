@@ -23,6 +23,20 @@ export interface Skill {
   slug: string;
 }
 
+export interface Project {
+  name: string;
+  description: string;
+  tech: string[];
+  stars?: number;
+  forks?: number;
+  demoUrl?: string;
+  repoUrl?: string;
+  isPublic: boolean;
+  updatedAt: string;
+  language: string;
+  isPinned: boolean;
+}
+
 export interface PortfolioData {
   profile: {
     name: string;
@@ -45,6 +59,7 @@ export interface PortfolioData {
   skills: Skill[];
   experiences: Experience[];
   education: Education[];
+  projects: Project[];
 }
 
 export async function getPortfolioData(): Promise<PortfolioData> {
@@ -67,6 +82,7 @@ export async function getPortfolioData(): Promise<PortfolioData> {
     },
     skills: [],
     experiences: [],
-    education: []
+    education: [],
+    projects: []
   };
 }

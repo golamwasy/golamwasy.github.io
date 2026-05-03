@@ -76,8 +76,8 @@ export function Experience() {
 
       <div className="relative pt-8">
         {/* Continuous single line with fade-in at the top */}
-        <div 
-          className="absolute left-1/2 -translate-x-1/2 top-0 bottom-12 w-[2px] hidden md:block z-0" 
+        <div
+          className="absolute left-1/2 -translate-x-1/2 top-0 bottom-12 w-[2px] hidden md:block z-0"
           style={{
             background: 'linear-gradient(to bottom, transparent, #27272a 150px, #27272a)'
           }}

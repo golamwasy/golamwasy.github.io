@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 interface SectionHeadingProps {
   icon: LucideIcon;
-  title: string;
+  title: React.ReactNode;
   prefix?: string;
 }
 

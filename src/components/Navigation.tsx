@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Monitor, User, Cpu, Briefcase, GraduationCap, Mail } from 'lucide-react';
+import { Monitor, User, Cpu, Briefcase, CodeXml, GraduationCap, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -8,6 +8,7 @@ const navItems = [
   { id: 'about', label: 'About', Icon: User },
   { id: 'skills', label: 'Skills', Icon: Cpu },
   { id: 'experience', label: 'Experience', Icon: Briefcase },
+  { id: 'projects', label: 'Projects', Icon: CodeXml },
   { id: 'education', label: 'Education', Icon: GraduationCap },
   { id: 'contact', label: 'Contact', Icon: Mail },
 ];

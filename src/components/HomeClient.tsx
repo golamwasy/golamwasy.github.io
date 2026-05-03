@@ -10,6 +10,7 @@ import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
 import { Experience } from "@/components/sections/Experience";
+import { Projects } from "@/components/sections/Projects";
 import { Education } from "@/components/sections/Education";
 import { Contact } from "@/components/sections/Contact";
 
@@ -25,10 +26,9 @@ export function HomeClient({ data }: { data: PortfolioData }) {
   return (
     <PortfolioProvider data={data}>
       <main className="relative min-h-screen bg-[#18181b] selection:bg-blue-500/30 overflow-x-hidden snap-y snap-mandatory scroll-smooth">
-        <StatusBadge />
         <CursorGlow />
         <Navigation />
-        
+
         <div className="fixed inset-0 grid-background pointer-events-none z-0" />
 
         {/* Main Container */}
@@ -37,6 +37,7 @@ export function HomeClient({ data }: { data: PortfolioData }) {
           <About />
           <Skills />
           <Experience />
+          <Projects />
           <Education />
           <Contact />
         </div>

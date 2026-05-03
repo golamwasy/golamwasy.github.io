@@ -14,7 +14,7 @@ const iconMap = {
 export function About() {
   const { profile: PROFILE } = usePortfolio();
   return (
-    <Section id="about">
+    <Section id="about" className="pt-10 lg:pt-0 pb-10 lg:pb-0">
       <SectionHeading icon={TerminalIcon} title="About.system" />
 
       <div className="grid lg:grid-cols-2 gap-16 items-start">
