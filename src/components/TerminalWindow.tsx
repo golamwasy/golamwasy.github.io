@@ -24,7 +24,7 @@ export const TerminalWindow = ({ title, children, className, bodyClassName }: Te
           {title}
         </div>
       </div>
-      <div className={cn("p-6 font-mono text-sm leading-relaxed", bodyClassName)}>
+      <div className={cn("p-4 md:p-6 font-mono text-sm leading-relaxed", bodyClassName)}>
         {children}
       </div>
     </div>

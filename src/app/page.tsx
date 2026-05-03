@@ -151,13 +151,13 @@ export default function Home() {
                         </div>
 
                         <div className="space-y-2 text-center lg:text-left">
-                           <h2 className="text-2xl lg:text-5xl font-bold text-white tracking-tight">Hello, I'm</h2>
-                           <h1 className="text-5xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-none">
+                           <h2 className="text-xl md:text-3xl lg:text-5xl font-bold text-white tracking-tight">Hello, I'm</h2>
+                           <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-[1.1]">
                               Golam Wasy
                            </h1>
                         </div>
 
-                        <p className="text-lg text-zinc-400 font-mono leading-relaxed max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
+                        <p className="text-base md:text-lg text-zinc-400 font-mono leading-relaxed max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
                            <span className="text-blue-500">{"<Full Stack Engineer />"}</span> Engineering Beyond Boundaries. Specializing in scalable backend architectures and distributed systems.
                         </p>
 
@@ -180,11 +180,13 @@ export default function Home() {
                            </div>
                         </div>
 
-                        <div className="flex items-center gap-3 pt-4">
+                        <div className="flex flex-wrap items-center gap-3 pt-4 justify-center lg:justify-start">
                            <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">Loaded_Modules:</span>
-                           {['React', 'Next.js', 'Node.js', 'TypeScript', 'Java', 'Spring'].map(mod => (
-                              <span key={mod} className="text-[8px] font-mono px-2 py-0.5 bg-zinc-900/50 border border-zinc-800 text-blue-500/70 rounded uppercase">{mod}</span>
-                           ))}
+                           <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+                              {['React', 'Next.js', 'Node.js', 'TypeScript', 'Java', 'Spring'].map(mod => (
+                                 <span key={mod} className="text-[8px] font-mono px-2 py-0.5 bg-zinc-900/50 border border-zinc-800 text-blue-500/70 rounded uppercase">{mod}</span>
+                              ))}
+                           </div>
                         </div>
                      </motion.div>
 
