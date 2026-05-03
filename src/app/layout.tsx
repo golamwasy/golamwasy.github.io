@@ -23,6 +23,9 @@ export async function generateMetadata() {
   return {
     title: `${profile.name} | ${profile.role}`,
     description: `Portfolio of ${profile.name}, a ${profile.role} specializing in ${profile.modules.join(", ")}.`,
+    icons: {
+      icon: '/bot-icon.svg',
+    },
   };
 }
 
