@@ -24,6 +24,7 @@ import {
    Search, Heart, Briefcase, GraduationCap, User, Cpu
 } from "lucide-react";
 import { TerminalWindow } from "@/components/TerminalWindow";
+import { TypingCode } from "@/components/TypingCode";
 import { SkillSphere } from "@/components/SkillSphere";
 import { CursorGlow } from "@/components/CursorGlow";
 import { Navigation } from "@/components/Navigation";
@@ -84,7 +85,7 @@ export default function Home() {
 
          {/* Main Container */}
          <div className="relative z-10 pb-24 lg:pb-0">
-            <div className="max-w-6xl mx-auto px-6 lg:px-12 pb-6 md:pb-12">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-6 md:pb-12">
 
                {/* 1. Hero Section */}
                <section id="hero" className="relative h-screen flex flex-col items-center justify-center overflow-hidden snap-start snap-always">
@@ -95,21 +96,21 @@ export default function Home() {
                            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">System.Kernel :: v2.5.0 Online</span>
                         </div>
 
-                        <div className="space-y-1 text-center lg:text-left">
-                           <h2 className="text-2xl lg:text-5xl font-bold text-white tracking-tight">Hello, I'm</h2>
-                           <h1 className="text-5xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-none">
+                        <div className="space-y-2 text-center lg:text-left">
+                           <h2 className="text-3xl lg:text-6xl font-bold text-white tracking-tight">Hello, I'm</h2>
+                           <h1 className="text-6xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-none">
                               Golam Wasy
                            </h1>
                         </div>
 
-                        <p className="text-lg text-zinc-400 font-mono leading-relaxed max-w-xl text-center lg:text-left mx-auto lg:mx-0">
+                        <p className="text-xl text-zinc-400 font-mono leading-relaxed max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
                            <span className="text-blue-500">{"<Software Engineer />"}</span> Engineering Beyond Boundaries. Specializing in scalable backend architectures and distributed systems.
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start">
                            {/* OS Init Progress */}
-                           <div className="flex-1 min-w-[280px] glass-panel rounded-lg p-3 border-blue-500/20 flex items-center gap-4">
-                              <TerminalIcon className="w-5 h-5 text-blue-500" />
+                           <div className="flex-1 min-w-[320px] glass-panel rounded-xl p-4 border-blue-500/20 flex items-center gap-5">
+                              <TerminalIcon className="w-6 h-6 text-blue-500" />
                               <div className="flex-1 space-y-2">
                                  <div className="flex justify-between text-[9px] font-mono uppercase text-zinc-500">
                                     <span>Initialize OS</span>
@@ -123,33 +124,16 @@ export default function Home() {
                                  </div>
                               </div>
                            </div>
-                           <a href="https://github.com/golamwasy" target="_blank" className="bg-zinc-900 border border-zinc-800 p-3 rounded-lg flex flex-col items-center justify-center gap-1 group hover:border-blue-500/50 transition-all">
-                              <GithubLogo className="w-5 h-5 text-zinc-400 group-hover:text-white" />
+                           <a href="https://github.com/golamwasy" target="_blank" className="bg-zinc-900 border border-zinc-800 p-4 rounded-xl flex flex-col items-center justify-center gap-2 group hover:border-blue-500/50 transition-all shadow-lg">
+                              <GithubLogo className="w-6 h-6 text-zinc-400 group-hover:text-white transition-colors" />
                               <span className="text-[9px] font-mono uppercase text-zinc-500">Github</span>
                            </a>
                         </div>
                      </motion.div>
 
-                     <motion.div className="flex-1 w-full max-w-lg lg:max-w-xl" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
-                        <TerminalWindow title="portfolio.tsx" className="terminal-shadow border-blue-500/20 scale-90 lg:scale-100 origin-center lg:origin-right">
-                           <div className="flex gap-4">
-                              <div className="text-zinc-700 select-none text-right w-4 font-mono text-xs">
-                                 1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10
-                              </div>
-                              <div className="flex-1 space-y-0.5 font-mono text-xs">
-                                 <div className="text-zinc-600">{"// My workspace"}</div>
-                                 <div><span className="text-purple-400">import</span> {"{"} <span className="text-blue-300">Developer</span> {"}"} <span className="text-purple-400">from</span> <span className="text-green-400">'./universe'</span>;</div>
-                                 <br />
-                                 <div><span className="text-purple-400">const</span> <span className="text-yellow-200">Portfolio</span> = () {"=>"} {"{"}</div>
-                                 <div className="pl-4"><span className="text-purple-400">return</span> (</div>
-                                 <div className="pl-8 text-blue-300">{"<Developer"}</div>
-                                 <div className="pl-12 text-zinc-400">name=<span className="text-green-400">"Golam Wasy"</span></div>
-                                 <div className="pl-12 text-zinc-400">role=<span className="text-green-400">"Software Engineer"</span></div>
-                                 <div className="pl-8 text-blue-300">{"/>"}</div>
-                                 <div className="pl-4">);</div>
-                                 <div>{"};"}</div>
-                              </div>
-                           </div>
+                     <motion.div className="flex-1 w-full max-w-lg lg:max-w-2xl" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+                        <TerminalWindow title="portfolio.tsx" className="terminal-shadow border-blue-500/20 scale-95 lg:scale-105 origin-center lg:origin-right">
+                           <TypingCode />
                         </TerminalWindow>
                      </motion.div>
                   </div>
@@ -167,8 +151,8 @@ export default function Home() {
                </section>
 
                {/* 2. About Section */}
-               <section id="about" className="min-h-screen flex flex-col justify-center py-24 md:py-32 snap-start snap-always">
-                  <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
+               <section id="about" className="min-h-fit flex flex-col justify-center py-8 md:py-16 snap-start snap-always">
+                  <h2 className="text-2xl font-mono mb-8 flex items-center gap-4 text-white">
                      <User className="text-blue-500 w-8 h-8" /> # about.system
                   </h2>
                   <div className="grid lg:grid-cols-[450px_1fr] gap-16 items-start">
@@ -243,8 +227,8 @@ export default function Home() {
                </section>
 
                {/* 3. Skills Section */}
-               <section id="skills" className="min-h-screen flex flex-col justify-center py-4 md:py-8 relative snap-start snap-always">
-                  <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
+               <section id="skills" className="min-h-fit flex flex-col justify-center py-8 md:py-12 relative snap-start snap-always">
+                  <h2 className="text-2xl font-mono mb-8 flex items-center gap-4 text-white">
                      <Cpu className="text-blue-500 w-8 h-8" /> # skills.json
                   </h2>
                   <div className="relative">
@@ -253,12 +237,12 @@ export default function Home() {
                </section>
 
                {/* 4. Experience Section */}
-               <section id="experience" className="min-h-[80vh] md:min-h-screen flex flex-col justify-center py-16 md:py-24 snap-start snap-always">
-                  <h2 className="text-3xl font-mono mb-20 flex items-center gap-4 text-white">
+               <section id="experience" className="min-h-fit flex flex-col justify-center py-12 md:py-20 snap-start snap-always">
+                  <h2 className="text-3xl font-mono mb-12 flex items-center gap-4 text-white">
                      <Briefcase className="text-blue-500 w-8 h-8" /> $ cat ~/career/experience.log
                   </h2>
 
-                  <div className="relative space-y-12 md:space-y-8">
+                  <div className="relative space-y-8 md:space-y-6">
                      <div className="exp-line hidden md:block" />
 
                      {[
@@ -347,7 +331,7 @@ export default function Home() {
                      ))}
 
                      {/* Initial Commit Milestone */}
-                     <motion.div className="flex flex-col items-center pt-24 relative" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+                   <motion.div className="flex flex-col items-center pt-8 relative" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
                         <div className="absolute top-0 h-24 left-1/2 w-px bg-zinc-800 hidden md:block" />
 
                         <div className="relative z-10 flex items-center justify-center gap-4 bg-zinc-900/80 border border-zinc-800 px-6 py-3 rounded-full terminal-shadow">
@@ -358,38 +342,13 @@ export default function Home() {
                   </div>
                </section>
 
-               {/* 5. Projects Section */}
-               <section id="education" className="min-h-[80vh] md:min-h-screen flex flex-col justify-center py-16 md:py-24 snap-start snap-always">
-                  <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
+               {/* 5. Education Section */}
+               <section id="education" className="min-h-fit flex flex-col justify-center py-12 md:py-20 snap-start snap-always">
+                  <h2 className="text-2xl font-mono mb-8 flex items-center gap-4 text-white">
                      <GraduationCap className="text-blue-500 w-8 h-8" /> $ ls -la ~/education
                   </h2>
 
-                  <div className="grid lg:grid-cols-[300px_1fr] gap-8">
-                     <div className="glass-panel border-zinc-800 rounded-xl overflow-hidden flex flex-col h-[600px] shadow-2xl">
-                        <div className="bg-zinc-900/80 p-4 border-b border-zinc-800 flex items-center justify-between">
-                           <div className="flex items-center gap-2 text-zinc-400 text-xs font-mono">
-                              <Monitor className="w-3 h-3" /> Diplomas
-                           </div>
-                           <span className="text-[10px] bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-500">2</span>
-                        </div>
-                        <div className="flex-1 overflow-y-auto p-2 space-y-2">
-                           {[
-                              { name: 'M.Sc. Computer Science', type: 'Public', lang: 'Adaptive_Norm', date: '2025' },
-                              { name: 'B.Sc. Software Engineering', type: 'Public', lang: 'Data_Analytics', date: '2022' },
-                           ].map(repo => (
-                              <div key={repo.name} className="p-3 rounded-lg border border-transparent hover:border-zinc-800 hover:bg-zinc-900/50 transition-all cursor-pointer group">
-                                 <div className="flex justify-between items-start mb-1">
-                                    <span className="text-sm font-bold text-zinc-300 group-hover:text-blue-400">{repo.name}</span>
-                                    <span className="text-[9px] border border-zinc-800 px-1 rounded text-zinc-600 font-mono uppercase">{repo.type}</span>
-                                 </div>
-                                 <div className="flex gap-3 text-[10px] font-mono text-zinc-600">
-                                    <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-yellow-500" /> {repo.lang}</span>
-                                    <span>{repo.date}</span>
-                                 </div>
-                              </div>
-                           ))}
-                        </div>
-                     </div>
+                  <div className="w-full">
 
                      <div className="grid md:grid-cols-2 gap-6 content-start">
                         {[
@@ -414,7 +373,7 @@ export default function Home() {
                                  <h3 className="font-bold text-white group-hover:text-blue-400 transition-colors">{proj.title}</h3>
                                  <span className="text-[10px] ml-auto border border-zinc-800 px-1.5 py-0.5 rounded text-zinc-500 font-mono uppercase">Certified</span>
                               </div>
-                              <p className="text-sm text-zinc-400 mb-6 leading-relaxed h-12 overflow-hidden">
+                              <p className="text-sm text-zinc-400 mb-6 leading-relaxed">
                                  {proj.desc}
                               </p>
                               <div className="flex flex-wrap gap-2 mb-6">
@@ -433,8 +392,8 @@ export default function Home() {
                </section>
 
                {/* 6. Contact Section */}
-               <section id="contact" className="pt-16 pb-8 snap-start snap-always">
-                  <h2 className="text-2xl font-mono mb-16 flex items-center gap-4 text-white">
+               <section id="contact" className="py-12 md:py-20 snap-start snap-always">
+                  <h2 className="text-2xl font-mono mb-8 flex items-center gap-4 text-white">
                      <Mail className="text-blue-500 w-8 h-8" /> ./contact.exe
                   </h2>
                   <div className="grid lg:grid-cols-2 gap-8">
