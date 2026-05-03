@@ -16,7 +16,8 @@ export function Contact() {
     honeypot: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error" | "rate-limit">("idle");
+  const [resetAt, setResetAt] = useState<number | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ export function Contact() {
     setSubmitStatus("idle");
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/send-contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,8 +46,15 @@ export function Contact() {
         }),
       });
 
+      if (response.status === 429) {
+        const result = await response.json();
+        setResetAt(result.resetAt);
+        setSubmitStatus("rate-limit");
+        return;
+      }
+
       const result = await response.json();
-      if (result.success) {
+      if (result.success || response.ok) {
         setSubmitStatus("success");
         setFormState({ subject: "", email: "", message: "", honeypot: "" });
       } else {
@@ -183,6 +191,27 @@ export function Contact() {
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                   [ERROR] Transmission failed. Check network link.
+                </motion.div>
+              )}
+
+              {submitStatus === "rate-limit" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg text-yellow-400 text-[10px] font-mono flex flex-col gap-1"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
+                    [LIMIT] Security policy: Rate limit reached.
+                  </div>
+                  <div className="pl-3.5 text-[9px] text-yellow-500/70">
+                    Transmission allowed after: {resetAt ? new Date(resetAt * 1000).toLocaleString(undefined, {
+                      month: 'short',
+                      day: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    }) : "24 hours"}
+                  </div>
                 </motion.div>
               )}
             </form>
