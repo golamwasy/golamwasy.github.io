@@ -1,38 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { usePortfolio } from '@/lib/context';
 
 interface Token {
   text: string;
   color: string;
 }
 
-const codeTokens: Token[] = [
-  { text: "// Welcome to my workspace\n", color: "text-rose-400" },
-  { text: "import ", color: "text-purple-400" },
-  { text: "{ ", color: "text-zinc-300" },
-  { text: "Developer ", color: "text-orange-400" },
-  { text: "} ", color: "text-zinc-300" },
-  { text: "from ", color: "text-purple-400" },
-  { text: "'./universe'", color: "text-green-400" },
-  { text: ";\n\n", color: "text-zinc-300" },
-  { text: "const ", color: "text-purple-400" },
-  { text: "Portfolio ", color: "text-yellow-400" },
-  { text: "= () => {\n", color: "text-zinc-300" },
-  { text: "  return (\n", color: "text-zinc-300" },
-  { text: "    <", color: "text-rose-400" },
-  { text: "Developer", color: "text-orange-400" },
-  { text: "\n      name=", color: "text-orange-400" },
-  { text: "\"Golam Wasy\"", color: "text-green-400" },
-  { text: "\n      role=", color: "text-orange-400" },
-  { text: "\"Full Stack Engineer\"", color: "text-green-400" },
-  { text: "\n      passion=", color: "text-orange-400" },
-  { text: "\"Engineering Beyond Boundaries\"", color: "text-green-400" },
-  { text: "\n    />\n", color: "text-rose-400" },
-  { text: "  );\n", color: "text-zinc-300" },
-  { text: "};", color: "text-zinc-300" },
-];
-
 export const TypingCode = () => {
+  const { profile } = usePortfolio();
+  
+  const codeTokens: Token[] = [
+    { text: "// Welcome to my workspace\n", color: "text-rose-400" },
+    { text: "import ", color: "text-purple-400" },
+    { text: "{ ", color: "text-zinc-300" },
+    { text: "Developer ", color: "text-orange-400" },
+    { text: "} ", color: "text-zinc-300" },
+    { text: "from ", color: "text-purple-400" },
+    { text: "'./universe'", color: "text-green-400" },
+    { text: ";\n\n", color: "text-zinc-300" },
+    { text: "const ", color: "text-purple-400" },
+    { text: "Portfolio ", color: "text-yellow-400" },
+    { text: "= () => {\n", color: "text-zinc-300" },
+    { text: "  return (\n", color: "text-zinc-300" },
+    { text: "    <", color: "text-rose-400" },
+    { text: "Developer", color: "text-orange-400" },
+    { text: "\n      name=", color: "text-orange-400" },
+    { text: `"${profile.name}"`, color: "text-green-400" },
+    { text: "\n      role=", color: "text-orange-400" },
+    { text: `"${profile.role}"`, color: "text-green-400" },
+    { text: "\n      passion=", color: "text-orange-400" },
+    { text: "\"Engineering Beyond Boundaries\"", color: "text-green-400" },
+    { text: "\n    />\n", color: "text-rose-400" },
+    { text: "  );\n", color: "text-zinc-300" },
+    { text: "};", color: "text-zinc-300" },
+  ];
+
   const [displayedTokens, setDisplayedTokens] = useState<{ text: string; color: string }[]>([]);
   const [currentTokenIndex, setCurrentTokenIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);

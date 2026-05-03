@@ -13,10 +13,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Golam Wasy Arnob | Software Engineer",
-  description: "Portfolio of Golam Wasy Arnob, a Full Stack Software Engineer specializing in Java, Spring Boot, and distributed systems.",
-};
+import { getPortfolioData } from "@/lib/data";
+
+export async function generateMetadata() {
+  const data = await getPortfolioData();
+  const { profile } = data;
+  
+  return {
+    title: `${profile.name} | ${profile.role}`,
+    description: `Portfolio of ${profile.name}, a ${profile.role} specializing in ${profile.modules.join(", ")}.`,
+  };
+}
 
 export default function RootLayout({
   children,
