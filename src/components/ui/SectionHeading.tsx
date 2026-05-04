@@ -17,7 +17,7 @@ export function SectionHeading({ icon: Icon, title, prefix = "#" }: SectionHeadi
       viewport={{ once: true }}
     >
       <Icon className="w-6 h-6 text-blue-500" />
-      <h2 className="font-mono text-2xl lg:text-3xl font-bold text-white">
+      <h2 className="font-mono text-2xl lg:text-3xl font-bold text-foreground">
         <span className="text-zinc-500">{prefix}</span> {title}
       </h2>
     </motion.div>

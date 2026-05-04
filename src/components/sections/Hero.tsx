@@ -31,7 +31,7 @@ export function Hero() {
           </div>
 
           <div className="space-y-2 text-center lg:text-left">
-            <h2 className="text-xl md:text-3xl lg:text-5xl font-bold text-white tracking-tight">Hello, I'm</h2>
+            <h2 className="text-xl md:text-3xl lg:text-5xl font-bold text-foreground tracking-tight">Hello, I'm</h2>
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300 tracking-tighter leading-[1.1] whitespace-nowrap">
               {PROFILE.name}
             </h1>

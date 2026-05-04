@@ -4,19 +4,119 @@
 /* 1. Theme Configuration                                                     */
 /* -------------------------------------------------------------------------- */
 @theme {
-  --color-background: #18181b;
-  --color-foreground: #ffffff;
-  --color-accent: #3b82f6;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --color-accent-hover: #60a5fa;
-  --color-terminal: #1e1e24;
-  --color-border: #2e2e33;
-  --color-text-muted: #d4d4d8;
+  --color-terminal: var(--terminal);
+  --color-border: var(--border);
+  --color-text-muted: var(--text-muted);
+  --color-accent-muted: var(--accent-muted);
+
+  /* Override Zinc palette for theme switching */
+  --color-zinc-50: var(--zinc-50);
+  --color-zinc-100: var(--zinc-100);
+  --color-zinc-200: var(--zinc-200);
+  --color-zinc-300: var(--zinc-300);
+  --color-zinc-400: var(--zinc-400);
+  --color-zinc-500: var(--zinc-500);
+  --color-zinc-600: var(--zinc-600);
+  --color-zinc-700: var(--zinc-700);
+  --color-zinc-800: var(--zinc-800);
+  --color-zinc-900: var(--zinc-900);
+  --color-zinc-950: var(--zinc-950);
+  --color-code-bracket: var(--code-bracket);
+  --color-code-key: var(--code-key);
+  --color-code-value: var(--code-string);
+  --color-code-keyword: var(--code-keyword);
+  --color-code-tag: var(--code-tag);
+  --color-code-attr: var(--code-attr);
+  --color-code-comment: var(--code-comment);
+  --color-code-var: var(--code-var);
+  --color-success: var(--text-success);
+  --color-error: var(--text-error);
+  --color-link: var(--text-link);
 }
 
+
 :root {
-  --background: #18181b;
+  --background: #09090b;
   --foreground: #ffffff;
   --accent: #3b82f6;
+  --accent-muted: rgba(59, 130, 246, 0.1);
+  --terminal: #1e1e24;
+  --border: #2e2e33;
+  --text-muted: #d4d4d8;
+  --grid-color: rgba(59, 130, 246, 0.12);
+  --glass-bg: rgba(30, 30, 36, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.12);
+
+  /* Code Highlighting - Dark Mode */
+  --code-comment: #fb7185;
+  --code-keyword: #c084fc;
+  --code-tag: #fb7185;
+  --code-attr: #fb923c;
+  --code-string: #4ade80;
+  --code-var: #facc15;
+  --code-bracket: #fdba74;
+  --code-key: #f87171;
+
+  --text-success: #4ade80;
+  --text-error: #f87171;
+  --text-link: #60a5fa;
+
+  /* Dark mode zinc values */
+  --zinc-50: #fafafa;
+  --zinc-100: #f4f4f5;
+  --zinc-200: #e4e4e7;
+  --zinc-300: #d4d4d8;
+  --zinc-400: #a1a1aa;
+  --zinc-500: #71717a;
+  --zinc-600: #52525b;
+  --zinc-700: #3f3f46;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  --zinc-950: #09090b;
+}
+
+[data-theme='light'] {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --accent: #2563eb;
+  --accent-muted: rgba(37, 99, 235, 0.15);
+  --terminal: #f8f8fa;
+  --border: #d4d4d8;
+  --text-muted: #52525b;
+  --grid-color: rgba(37, 99, 235, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.12);
+
+  /* Code Highlighting - Light Mode */
+  --code-comment: #64748b;
+  --code-keyword: #7c3aed;
+  --code-tag: #be123c;
+  --code-attr: #0369a1;    /* Deep Sky Blue for attributes */
+  --code-string: #166534;  /* Dark Forest Green for strings/values */
+  --code-var: #4338ca;     /* Indigo for variables */
+  --code-bracket: #52525b; /* Neutral for brackets */
+  --code-key: #991b1b;     /* Dark Red for property names/keys */
+
+  --text-success: #15803d;
+  --text-error: #b91c1c;
+  --text-link: #2563eb;
+
+  /* Light mode zinc values (Darker for better contrast) */
+  --zinc-50: #09090b;
+  --zinc-100: #18181b;
+  --zinc-200: #27272a;
+  --zinc-300: #3f3f46;
+  --zinc-400: #52525b;
+  --zinc-500: #71717a;
+  --zinc-600: #888891;
+  --zinc-700: #a1a1aa;
+  --zinc-800: #d4d4d8;
+  --zinc-900: #e4e4e7;
+  --zinc-950: #f4f4f5;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -27,6 +127,17 @@ body {
   color: var(--foreground);
   overflow-x: hidden;
   font-family: var(--font-geist-sans);
+  transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1), color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow, opacity;
+  transition-duration: 1.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+svg, i {
+  transition: color 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .font-mono {
@@ -40,22 +151,26 @@ body {
 /* Precise Grid Background */
 .grid-background {
   background-image: 
-    linear-gradient(to right, rgba(59, 130, 246, 0.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: center;
 }
 
 /* Glass Panel Effect */
 .glass-panel {
-  background: rgba(30, 30, 36, 0.85);
+  background: var(--glass-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--glass-border);
 }
 
 /* Terminal Shadow */
 .terminal-shadow {
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .terminal-shadow {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 /* Experience Timeline Line */
@@ -66,7 +181,7 @@ body {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #3f3f46;
+  background: var(--zinc-800);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -117,9 +232,9 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+  background: var(--border);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: var(--accent);
 }

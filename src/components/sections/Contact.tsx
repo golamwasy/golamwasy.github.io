@@ -84,7 +84,7 @@ export function Contact() {
       <div className="flex-1 flex flex-col justify-center">
         <SectionHeading icon={Mail} title="./contact.exe" />
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          <TerminalWindow title="contact_info.json" className="bg-[#0b0b0d] border-zinc-800 shadow-2xl shadow-blue-500/5">
+          <TerminalWindow title="contact_info.json" className="bg-zinc-950 border-zinc-800 shadow-2xl shadow-blue-500/5">
             <div className="flex font-mono text-sm leading-relaxed min-h-[320px]">
               <div className="flex flex-col text-zinc-700 pr-4 text-right select-none border-r border-zinc-800/50 mr-4">
                 {Array.from({ length: 16 }).map((_, i) => (
@@ -94,27 +94,27 @@ export function Contact() {
 
               <div className="flex-1">
                 <div className="space-y-0.5">
-                  <div><span className="text-orange-300">{"{"}</span></div>
+                  <div><span className="text-code-bracket">{"{"}</span></div>
                   <div className="pl-4">
-                    <span className="text-red-400">"status"</span><span className="text-orange-300">:</span> <span className="text-green-400">"available_for_opportunities"</span><span className="text-orange-300">,</span>
+                    <span className="text-code-key">"status"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"available_for_opportunities"</span><span className="text-code-bracket">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-red-400">"email"</span><span className="text-orange-300">:</span> <span className="text-green-400">"{PROFILE.email}"</span><span className="text-orange-300">,</span>
+                    <span className="text-code-key">"email"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"{PROFILE.email}"</span><span className="text-code-bracket">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-red-400">"socials"</span><span className="text-orange-300">:</span> <span className="text-orange-300">{"{"}</span>
+                    <span className="text-code-key">"socials"</span><span className="text-code-bracket">:</span> <span className="text-code-bracket">{"{"}</span>
                   </div>
                   <div className="pl-8">
-                    <span className="text-red-400">"github"</span><span className="text-orange-300">:</span> <span className="text-green-400">"{PROFILE.github}"</span><span className="text-orange-300">,</span>
+                    <span className="text-code-key">"github"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"{PROFILE.github}"</span><span className="text-code-bracket">,</span>
                   </div>
                   <div className="pl-8">
-                    <span className="text-red-400">"linkedin"</span><span className="text-orange-300">:</span> <span className="text-green-400">"{PROFILE.linkedin}"</span>
+                    <span className="text-code-key">"linkedin"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"{PROFILE.linkedin}"</span>
                   </div>
-                  <div className="pl-4"><span className="text-orange-300">{"}"}</span><span className="text-orange-300">,</span></div>
+                  <div className="pl-4"><span className="text-code-bracket">{"}"}</span><span className="text-code-bracket">,</span></div>
                   <div className="pl-4">
-                    <span className="text-red-400">"location"</span><span className="text-orange-300">:</span> <span className="text-green-400">"{PROFILE.location}"</span>
+                    <span className="text-code-key">"location"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"{PROFILE.location}"</span>
                   </div>
-                  <div><span className="text-orange-300">{"}"}</span></div>
+                  <div><span className="text-code-bracket">{"}"}</span></div>
 
                   <div className="pt-8 text-zinc-600 italic">// Waiting for connection...</div>
                   <div className="flex items-center gap-2 mt-2">
@@ -126,7 +126,7 @@ export function Contact() {
             </div>
           </TerminalWindow>
 
-          <TerminalWindow title="send_message.sh" className="bg-[#0b0b0d] border-zinc-800">
+          <TerminalWindow title="send_message.sh" className="bg-zinc-950 border-zinc-800">
             <form className="space-y-4" onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -143,7 +143,7 @@ export function Contact() {
                   placeholder="viewer@example.com"
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full bg-black border border-zinc-800 rounded-lg px-4 py-2 focus:border-blue-500/50 outline-none text-xs font-mono text-zinc-300"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 focus:border-blue-500/50 outline-none text-xs font-mono text-zinc-300"
                 />
               </div>
               <div className="space-y-1">
@@ -151,10 +151,10 @@ export function Contact() {
                 <input
                   type="text"
                   required
-                  placeholder="Project Inquiry"
+                  placeholder="Inquiry"
                   value={formState.subject}
                   onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
-                  className="w-full bg-black border border-zinc-800 rounded-lg px-4 py-2 focus:border-blue-500/50 outline-none text-xs font-mono text-zinc-300"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 focus:border-blue-500/50 outline-none text-xs font-mono text-zinc-300"
                 />
               </div>
               <div className="space-y-1">
@@ -164,13 +164,13 @@ export function Contact() {
                   placeholder="Write your message here..."
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  className="w-full bg-black border border-zinc-800 rounded-lg px-4 py-2 h-32 focus:border-blue-500/50 outline-none text-xs font-mono text-zinc-300 resize-none"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 h-32 focus:border-blue-500/50 outline-none text-xs font-mono text-zinc-300 resize-none"
                 />
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-500/10 border border-blue-500/30 text-blue-500 py-3 rounded-lg hover:bg-blue-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all font-mono text-xs flex items-center justify-center gap-2"
+                className="w-full bg-blue-500/10 border border-blue-500/30 text-blue-500 py-3 rounded-lg hover:bg-blue-600 hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed transition-all font-mono text-xs flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <span className="animate-pulse">sudo_sending...</span>
@@ -183,9 +183,9 @@ export function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-3 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400 text-[10px] font-mono flex items-center gap-2"
+                  className="mt-4 p-3 bg-success/10 border border-success/30 rounded-lg text-success text-[10px] font-mono flex items-center gap-2"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
                   [SUCCESS] Message transmitted to system.kernel
                 </motion.div>
               )}
@@ -194,9 +194,9 @@ export function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-[10px] font-mono flex items-center gap-2"
+                  className="mt-4 p-3 bg-error/10 border border-error/30 rounded-lg text-error text-[10px] font-mono flex items-center gap-2"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-error animate-pulse" />
                   [ERROR] Transmission failed. Check network link.
                 </motion.div>
               )}
@@ -205,10 +205,10 @@ export function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg text-yellow-400 text-[10px] font-mono flex flex-col gap-1"
+                  className="mt-4 p-3 bg-orange-500/10 border border-orange-500/30 rounded-lg text-code-bracket text-[10px] font-mono flex flex-col gap-1"
                 >
                   <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
                     [LIMIT] Security policy: Message limit reached.
                   </div>
                   <div className="pl-3.5 text-[9px] text-yellow-500/70">

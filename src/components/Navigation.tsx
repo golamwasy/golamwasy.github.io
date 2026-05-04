@@ -60,7 +60,7 @@ export const Navigation = () => {
               <div className="w-2 h-2 rounded-full bg-zinc-800 border border-zinc-700 group-hover:bg-zinc-600 transition-colors" />
             )}
             
-            <span className="absolute right-14 top-1/2 -translate-y-1/2 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap bg-zinc-950/80 backdrop-blur-md px-3 py-1 rounded-md border border-zinc-800">
+            <span className="absolute right-14 top-1/2 -translate-y-1/2 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap bg-zinc-900/80 backdrop-blur-md px-3 py-1 rounded-md border border-zinc-800">
               {item.label}
             </span>
           </a>

@@ -29,6 +29,9 @@ export async function generateMetadata() {
   };
 }
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,13 +40,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
+      suppressHydrationWarning
     >
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
-      <body className="bg-[#09090b] text-zinc-100 selection:bg-blue-500/30">
-        {children}
+      <body className="selection:bg-blue-500/30">
+        <ThemeProvider>
+          <ThemeToggle />
+          {children}
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

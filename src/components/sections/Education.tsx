@@ -15,7 +15,7 @@ const fadeInUp = {
 function EducationItem({ item }: { item: EducationType }) {
   return (
     <motion.div
-      className="glass-panel border-zinc-800 hover:border-blue-500/30 rounded-xl p-6 transition-all group"
+      className="bg-zinc-950 border border-zinc-800 hover:border-blue-500/30 rounded-xl p-6 transition-all group"
       initial="initial"
       whileInView="animate"
       viewport={{ once: true }}
@@ -23,7 +23,7 @@ function EducationItem({ item }: { item: EducationType }) {
     >
       <div className="flex items-center gap-3 mb-4">
         <FileCode className="w-5 h-5 text-blue-500" />
-        <h3 className="font-bold text-white group-hover:text-blue-400 transition-colors">{item.title}</h3>
+        <h3 className="font-bold text-foreground group-hover:text-blue-400 transition-colors">{item.title}</h3>
         <span className="text-[10px] ml-auto border border-zinc-800 px-1.5 py-0.5 rounded text-zinc-500 font-mono uppercase">Certified</span>
       </div>
       <p className="text-sm text-zinc-400 mb-6 leading-relaxed">
@@ -35,7 +35,7 @@ function EducationItem({ item }: { item: EducationType }) {
         ))}
       </div>
       <div className="flex justify-between items-center text-[10px] font-mono pt-4 border-t border-zinc-900">
-        <span className="flex items-center gap-1 font-bold text-white"><MapPin className="w-3 h-3 text-zinc-600" /> {item.school}</span>
+        <span className="flex items-center gap-1 font-bold text-foreground"><MapPin className="w-3 h-3 text-zinc-600" /> {item.school}</span>
       </div>
     </motion.div>
   );

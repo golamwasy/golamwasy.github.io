@@ -28,10 +28,10 @@ function ExperienceItem({ exp, index }: { exp: ExperienceType; index: number }) 
       variants={fadeInUp}
     >
       <div className="flex-1 w-full">
-        <TerminalWindow title={`${exp.hash} HEAD -> ${exp.branch}`} className="bg-[#0b0b0d] border-zinc-800">
+        <TerminalWindow title={`${exp.hash} HEAD -> ${exp.branch}`} className="bg-zinc-950 border-zinc-800">
           <div className="flex justify-between items-start mb-6">
             <div>
-              <h3 className="text-xl font-bold text-white">{exp.role} <span className="text-zinc-600 font-normal">@ {exp.company}</span></h3>
+              <h3 className="text-xl font-bold text-foreground">{exp.role} <span className="text-zinc-600 font-normal">@ {exp.company}</span></h3>
             </div>
           </div>
           <p className="text-sm text-zinc-400 mb-6 border-l-2 border-zinc-800 pl-4 py-2 italic leading-relaxed">
@@ -39,21 +39,21 @@ function ExperienceItem({ exp, index }: { exp: ExperienceType; index: number }) 
           </p>
           <div className="flex flex-wrap gap-2 mb-8">
             {exp.tech.map(t => (
-              <span key={t} className="text-[10px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 text-blue-400 rounded">{t}</span>
+              <span key={t} className="text-[10px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 text-link rounded">{t}</span>
             ))}
           </div>
           <div className="pt-4 border-t border-zinc-900 flex justify-between items-center text-[10px] font-mono text-zinc-600 uppercase">
             <div className="flex gap-4">
               <span>11 files changed</span>
-              <span className="text-green-500">+100 insertions</span>
-              <span className="text-red-500">-10 deletions</span>
+              <span className="text-success">+100 insertions</span>
+              <span className="text-error">-10 deletions</span>
             </div>
           </div>
         </TerminalWindow>
       </div>
 
       <div className="relative z-20 hidden md:block">
-        <div className="w-4 h-4 rounded-full bg-black border-2 border-blue-500 shadow-[0_0_15px_#3b82f6]" />
+        <div className="w-4 h-4 rounded-full bg-zinc-950 border-2 border-blue-500 shadow-[0_0_15px_#3b82f6]" />
         <div className={cn(
           "absolute top-1/2 -translate-y-1/2 glass-panel px-3 py-1 rounded-full border-zinc-800 text-[10px] font-mono text-zinc-400 whitespace-nowrap flex items-center gap-2",
           index % 2 === 0 ? "left-8" : "right-8"
@@ -79,7 +79,7 @@ export function Experience() {
         <div
           className="absolute left-1/2 -translate-x-1/2 top-0 bottom-12 w-[2px] hidden md:block z-0"
           style={{
-            background: 'linear-gradient(to bottom, transparent, #27272a 150px, #27272a)'
+            background: 'linear-gradient(to bottom, transparent, var(--zinc-800) 150px, var(--zinc-800))'
           }}
         />
 

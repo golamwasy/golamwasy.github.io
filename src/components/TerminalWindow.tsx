@@ -11,7 +11,7 @@ interface TerminalWindowProps {
 export const TerminalWindow = ({ title, children, className, bodyClassName }: TerminalWindowProps) => {
   return (
     <div className={cn(
-      "bg-black border border-zinc-800 rounded-lg overflow-hidden shadow-2xl transition-all duration-300 hover:border-blue-500/30",
+      "bg-zinc-950 border border-zinc-800 rounded-lg overflow-hidden shadow-2xl transition-all duration-300 hover:border-blue-500/30",
       className
     )}>
       <div className="bg-zinc-900 px-4 py-2 flex items-center border-bottom border-zinc-800 relative">

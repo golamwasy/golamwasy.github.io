@@ -38,10 +38,10 @@ export function Projects() {
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="lg:col-span-4 bg-[#1e1e1e] rounded-xl border border-zinc-800/50 overflow-hidden shadow-2xl"
+          className="lg:col-span-4 bg-zinc-950 rounded-xl border border-zinc-800/50 overflow-hidden shadow-2xl"
         >
           <div className="p-4 border-b border-zinc-800/50 bg-zinc-800/20 flex items-center justify-between">
-            <div className="flex items-center gap-2 text-zinc-300 font-mono text-xs uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-foreground font-mono text-xs uppercase tracking-wider">
               <BookOpen className="w-3.5 h-3.5 text-blue-500" />
               Repositories
             </div>
@@ -78,14 +78,14 @@ export function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative bg-[#1e1e1e] border border-zinc-800/50 rounded-xl p-6 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(59,130,246,0.15)] flex flex-col"
+                className="group relative bg-zinc-950 border border-zinc-800/50 rounded-xl p-6 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(59,130,246,0.15)] flex flex-col"
               >
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2.5">
                     <div className="p-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 group-hover:border-blue-500/30 transition-colors">
                       <Terminal className="w-4 h-4 text-zinc-400 group-hover:text-blue-400 transition-colors" />
                     </div>
-                    <h3 className="text-base font-bold text-zinc-100 group-hover:text-blue-400 transition-colors tracking-tight">{project.name}</h3>
+                    <h3 className="text-base font-bold text-foreground group-hover:text-blue-400 transition-colors tracking-tight">{project.name}</h3>
                   </div>
                   <span className="text-[9px] text-zinc-600 border border-zinc-800/50 px-1.5 py-0.5 rounded uppercase tracking-wider font-mono">
                     {project.isPublic ? "Public" : "Private"}
@@ -98,7 +98,7 @@ export function Projects() {
 
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {project.tech.map((tag, j) => (
-                    <span key={j} className="text-[9px] font-mono px-2 py-0.5 bg-zinc-800/30 text-zinc-500 rounded border border-zinc-800/50 group-hover:border-blue-500/10 group-hover:text-blue-400/70 transition-colors">
+                    <span key={j} className="text-[9px] font-mono px-2 py-0.5 bg-zinc-800/30 text-link rounded border border-zinc-800/50 group-hover:border-blue-500/10 group-hover:text-blue-400/70 transition-colors">
                       {tag}
                     </span>
                   ))}
@@ -121,7 +121,7 @@ export function Projects() {
                         href={project.repoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 text-zinc-500 hover:text-white transition-colors rounded-md hover:bg-zinc-800"
+                        className="p-2 text-zinc-500 hover:text-foreground transition-colors rounded-md hover:bg-zinc-800"
                         title="View Repository"
                       >
                         <Code className="w-4 h-4" />
@@ -132,7 +132,7 @@ export function Projects() {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 hover:bg-blue-600 text-zinc-300 hover:text-white rounded-md text-[10px] font-bold uppercase tracking-wider transition-all group/btn"
+                        className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 hover:bg-blue-600 text-zinc-300 hover:text-foreground rounded-md text-[10px] font-bold uppercase tracking-wider transition-all group/btn"
                       >
                         Demo
                         <ExternalLink className="w-3 h-3 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />

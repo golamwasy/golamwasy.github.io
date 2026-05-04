@@ -21,11 +21,11 @@ export function HomeClient({ data }: { data: PortfolioData }) {
     setMounted(true);
   }, []);
 
-  if (!mounted) return <div className="min-h-screen bg-[#18181b]" />;
+  if (!mounted) return <div className="min-h-screen bg-background" />;
 
   return (
     <PortfolioProvider data={data}>
-      <main className="relative min-h-screen bg-[#18181b] selection:bg-blue-500/30 overflow-x-hidden snap-y snap-mandatory scroll-smooth">
+      <main className="relative min-h-screen bg-background selection:bg-blue-500/30 overflow-x-hidden snap-y snap-mandatory scroll-smooth">
         <CursorGlow />
         <Navigation />
 
