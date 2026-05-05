@@ -17,9 +17,6 @@ export function Footer({ className }: { className?: string }) {
           <h4 className="font-bold text-zinc-300 text-lg">
             {PROFILE.name} | <span className="text-blue-500 font-mono text-sm">{PROFILE.role}</span>
           </h4>
-          <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest flex items-center justify-center gap-2">
-            Built with <Heart className="w-3 h-3 text-red-500/60" /> using Next.js, TypeScript {"&"} Tailwind
-          </p>
         </div>
         <div className="flex flex-col items-center gap-1">
           <p className="text-[11px] font-mono text-zinc-500 uppercase tracking-[0.3em]">
