@@ -1,4 +1,19 @@
-import { get } from '@vercel/edge-config';
+import { readFile } from 'fs/promises';
+import path from 'path';
+import { getRedisClient } from './redis';
+
+const PORTFOLIO_KEY = 'portfolio';
+
+async function readSeedFile(): Promise<PortfolioData | null> {
+  try {
+    const filePath = path.join(process.cwd(), 'data', 'portfolio.json');
+    const raw = await readFile(filePath, 'utf8');
+    return JSON.parse(raw) as PortfolioData;
+  } catch (error) {
+    console.error('Reading data/portfolio.json failed:', error);
+    return null;
+  }
+}
 
 export interface Experience {
   company: string;
@@ -64,13 +79,19 @@ export interface PortfolioData {
 
 export async function getPortfolioData(): Promise<PortfolioData> {
   try {
-    const data = await get<PortfolioData>('portfolio');
-    if (data) return data;
+    const client = getRedisClient();
+    if (client) {
+      const raw = await client.get(PORTFOLIO_KEY);
+      if (raw) return JSON.parse(raw) as PortfolioData;
+    }
   } catch (error) {
-    console.error('Edge Config fetch failed:', error);
+    console.error('Redis fetch failed:', error);
   }
-  
-  // Return empty structure if fetch fails
+
+  const seed = await readSeedFile();
+  if (seed) return seed;
+
+  // Return empty structure if everything else fails
   return {
     profile: {
       name: "", role: "", shortRole: "", 

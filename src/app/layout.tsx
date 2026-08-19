@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,6 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 import { getPortfolioData } from "@/lib/data";
+
+export const revalidate = 60;
 
 export async function generateMetadata() {
   const data = await getPortfolioData();
@@ -51,8 +51,6 @@ export default function RootLayout({
           <ThemeToggle />
           {children}
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

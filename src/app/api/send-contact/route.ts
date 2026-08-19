@@ -1,36 +1,12 @@
-import Redis from 'ioredis';
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
+import { getRedisClient } from '@/lib/redis';
 
 const LIMIT = 3;
 const WINDOW = 24 * 60 * 60; // 24 hours in seconds
 
-let redis: Redis | null = null;
-
-function getRedis() {
-  if (!redis && process.env.REDIS_URL) {
-    try {
-      // Use WHATWG URL API to avoid the deprecated url.parse() warning
-      const url = new URL(process.env.REDIS_URL);
-      redis = new Redis({
-        host: url.hostname,
-        port: parseInt(url.port || '6379'),
-        username: url.username || undefined,
-        password: url.password || undefined,
-        db: parseInt(url.pathname.replace('/', '') || '0'),
-        // Automatically handle TLS if the protocol is rediss://
-        tls: url.protocol === 'rediss:' ? {} : undefined,
-      });
-    } catch (e) {
-      // Fallback to string if URL parsing fails
-      redis = new Redis(process.env.REDIS_URL);
-    }
-  }
-  return redis;
-}
-
 export async function POST() {
-  const client = getRedis();
+  const client = getRedisClient();
 
   if (!client) {
     return NextResponse.json({ success: true, allowed: true });

@@ -6,17 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:portfolio": "node scripts/seed-portfolio.mjs"
   },
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^2.0.2",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@types/three": "^0.184.0",
-    "@vercel/analytics": "^2.0.1",
-    "@vercel/edge-config": "^1.4.3",
-    "@vercel/kv": "^3.0.0",
-    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
     "ioredis": "^5.10.1",

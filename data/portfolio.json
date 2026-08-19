@@ -1,0 +1,247 @@
+{
+  "profile": {
+    "name": "Golam Wasy",
+    "role": "Software Engineer",
+    "shortRole": "Software_Engineer",
+    "tagline": "Where research meets real-world engineering",
+    "roleLine": "Backend-first, full-stack capable. Building reliable systems and tools people actually rely on.",
+    "location": "Helsinki, Finland",
+    "status": "ACTIVE",
+    "email": "golamwasy@gmail.com",
+    "github": "@golamwasy",
+    "linkedin": "@golamwasy",
+    "modules": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "Java",
+      "Spring"
+    ],
+    "bio": {
+      "whoami": "Software Engineer with a mix of research and building real things. I enjoy both sides — digging into a problem and actually shipping something. I care about getting the details right, whether that's performance, security, or a tool that just works better than before.",
+      "mission": "Turning complex business requirements into working software. Experienced in Java and Spring Boot on the backend, React and Angular on the frontend, with AWS, Docker, Kubernetes, and CI/CD pipelines in between."
+    },
+    "stats": [
+      {
+        "label": "EXPERIENCE",
+        "value": "2.5+",
+        "unit": "YRS"
+      },
+      {
+        "label": "PROJECTS",
+        "value": "5+",
+        "unit": "PRJ"
+      },
+      {
+        "label": "HACKATHONS",
+        "value": "1",
+        "unit": "WIN"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "name": "Java",
+      "slug": "java"
+    },
+    {
+      "name": "Spring Boot",
+      "slug": "spring"
+    },
+    {
+      "name": "React",
+      "slug": "react"
+    },
+    {
+      "name": "Angular",
+      "slug": "angular"
+    },
+    {
+      "name": "PostgreSQL",
+      "slug": "postgresql"
+    },
+    {
+      "name": "Docker",
+      "slug": "docker"
+    },
+    {
+      "name": "AWS",
+      "slug": "amazonwebservices"
+    },
+    {
+      "name": "Kubernetes",
+      "slug": "kubernetes"
+    },
+    {
+      "name": "Python",
+      "slug": "python"
+    },
+    {
+      "name": "TypeScript",
+      "slug": "typescript"
+    },
+    {
+      "name": "MySQL",
+      "slug": "mysql"
+    },
+    {
+      "name": "Ionic",
+      "slug": "ionic"
+    },
+    {
+      "name": "Git",
+      "slug": "git"
+    },
+    {
+      "name": "Flutter",
+      "slug": "flutter"
+    },
+    {
+      "name": "Node.js",
+      "slug": "nodejs"
+    },
+    {
+      "name": "Tailwind",
+      "slug": "tailwindcss"
+    }
+  ],
+  "experiences": [
+    {
+      "company": "Ritchie Bros.",
+      "role": "Associate Software Engineer",
+      "period": "2025-06 - Present",
+      "hash": "rb_0625",
+      "branch": "payments",
+      "desc": "Working on the Control Tower team within a digital payments platform. Most of my work has been around an internal support app used by customer service, finance, and operations teams to handle post-sale workflows — things like invoice adjustments, payments, and audit reports. On the backend I work on a Spring Boot microservice that surfaces this data, and on the frontend, helping move parts of the app from Retool to React.",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "React",
+        "JavaScript",
+        "Retool",
+        "CircleCI",
+        "Honeycomb"
+      ]
+    },
+    {
+      "company": "University of Helsinki",
+      "role": "Research Assistant (Thesis)",
+      "period": "2025-01 - 2025-04",
+      "hash": "uh_0125",
+      "branch": "thesis",
+      "desc": "Worked on my Master's thesis, exploring how different data normalization approaches affect anomaly detection on real-world datasets.",
+      "tech": [
+        "Python",
+        "IoT",
+        "Anomaly Detection",
+        "Data Modeling"
+      ]
+    },
+    {
+      "company": "University of Helsinki & Nokia Bell Labs",
+      "role": "Research Assistant (Intern)",
+      "period": "2024-05 - 2024-08",
+      "hash": "nokia_0524",
+      "branch": "intern",
+      "desc": "Part of a joint research project looking at data efficiency techniques for mobile networks, mostly evaluating how normalization methods hold up on telecom data.",
+      "tech": [
+        "Data Efficiency",
+        "Mobile Networks",
+        "Research"
+      ]
+    },
+    {
+      "company": "Wavelet Solutions Sdn. Bhd.",
+      "role": "Software Developer (Freelance)",
+      "period": "2022-03 - 2023-02",
+      "hash": "wav_0322",
+      "branch": "freelance",
+      "desc": "Built and maintained mobile apps and a web console for clients, handled the backend APIs, and worked with their database and cloud setup.",
+      "tech": [
+        "Angular",
+        "Ionic",
+        "Java",
+        "Spring Boot",
+        "AWS"
+      ]
+    },
+    {
+      "company": "BigLedger Sdn. Bhd.",
+      "role": "Software Developer (Intern)",
+      "period": "2021-08 - 2022-02",
+      "hash": "big_0821",
+      "branch": "backend",
+      "desc": "My first proper backend role — writing Spring Boot code, migrating databases, and getting familiar with deploying things on AWS.",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "Database Migration",
+        "PostgreSQL",
+        "Git"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Planora",
+      "description": "AI-powered task management and project planning platform with real-time collaboration, Gantt charts, and automated risk assessment.",
+      "tech": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Gemini AI"
+      ],
+      "stars": 12,
+      "forks": 4,
+      "demoUrl": "https://planora.golamwasy.dev",
+      "repoUrl": "https://github.com/golamwasy/planora",
+      "isPublic": false,
+      "updatedAt": "2 days ago",
+      "language": "TypeScript",
+      "isPinned": true
+    },
+    {
+      "name": "Portfolio",
+      "description": "Professional terminal-themed portfolio built with Next.js 15, featuring dynamic data from Vercel Edge Config and high-fidelity terminal UI components.",
+      "tech": [
+        "Next.js 15",
+        "React 19",
+        "Tailwind CSS 4",
+        "Framer Motion",
+        "Edge Config"
+      ],
+      "stars": 8,
+      "forks": 3,
+      "demoUrl": "https://golamwasy.dev",
+      "repoUrl": "https://github.com/golamwasy/golamwasy.github.io",
+      "isPublic": true,
+      "updatedAt": "Just now",
+      "language": "TypeScript",
+      "isPinned": true
+    }
+  ],
+  "education": [
+    {
+      "title": "M.Sc. Computer Science",
+      "school": "University of Helsinki",
+      "period": "2023 - 2025",
+      "desc": " Evaluating the Impact of Adaptive Normalization Techniques on Anomaly Detection Models.",
+      "tech": [
+        "Data Normalization",
+        "Anomaly Detection"
+      ]
+    },
+    {
+      "title": "B.Sc. Software Engineering",
+      "school": "Universiti Teknologi Malaysia",
+      "period": "2018 - 2022",
+      "desc": "Data Analytics For Predicting COVID-19 Cases Using Supervised Regression Techniques.",
+      "tech": [
+        "Software Engineering",
+        "Data Analytics"
+      ]
+    }
+  ]
+}

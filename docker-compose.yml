@@ -1,0 +1,49 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY}
+    restart: unless-stopped
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    networks:
+      - traefik-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio-app.rule=Host(`golamwasy.dev`)"
+      - "traefik.http.routers.portfolio-app.entrypoints=web"
+      - "traefik.http.services.portfolio-app.loadbalancer.server.port=3000"
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - portfolio_redis_data:/data
+    networks:
+      - traefik-net
+    command: ["redis-server", "--save", "60", "1", "--appendonly", "yes"]
+
+  # One-off helper to (re)load data/portfolio.json into Redis.
+  # Usage: docker compose --profile tools run --rm seed
+  seed:
+    build:
+      context: .
+      target: builder
+    profiles: ["tools"]
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    command: ["node", "scripts/seed-portfolio.mjs"]
+    networks:
+      - traefik-net
+    depends_on:
+      - redis
+
+networks:
+  traefik-net:
+    external: true
+
+volumes:
+  portfolio_redis_data:
