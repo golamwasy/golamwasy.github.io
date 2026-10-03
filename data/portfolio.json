@@ -6,26 +6,26 @@
     "tagline": "Where research meets real-world engineering",
     "roleLine": "Backend-first, full-stack capable. Building reliable systems and tools people actually rely on.",
     "location": "Helsinki, Finland",
-    "status": "ACTIVE",
+    "status": "OPEN_TO_WORK",
     "email": "golamwasy@gmail.com",
     "github": "@golamwasy",
     "linkedin": "@golamwasy",
     "modules": [
-      "React",
-      "Next.js",
-      "Node.js",
-      "TypeScript",
       "Java",
-      "Spring"
+      "Spring Boot",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Kafka"
     ],
     "bio": {
-      "whoami": "Software Engineer with a mix of research and building real things. I enjoy both sides — digging into a problem and actually shipping something. I care about getting the details right, whether that's performance, security, or a tool that just works better than before.",
-      "mission": "Turning complex business requirements into working software. Experienced in Java and Spring Boot on the backend, React and Angular on the frontend, with AWS, Docker, Kubernetes, and CI/CD pipelines in between."
+      "whoami": "Software Engineer, mostly backend with Java and Spring Boot, and comfortable on the frontend with React and TypeScript. I care about reliable, well tested code, and I support what I ship in production. My Master's research on anomaly detection taught me to dig into a problem properly before building.",
+      "mission": "Turning complex business requirements into working software. REST APIs across microservices with Kafka and PostgreSQL on the backend, React and TypeScript on the frontend, with JUnit, Mockito, contract tests and Playwright to keep it honest, and CI/CD, Docker and on-call to keep it running."
     },
     "stats": [
       {
         "label": "EXPERIENCE",
-        "value": "2.5+",
+        "value": "3+",
         "unit": "YRS"
       },
       {
@@ -110,32 +110,38 @@
     {
       "company": "Ritchie Bros.",
       "role": "Associate Software Engineer",
-      "period": "2025-06 - Present",
+      "period": "2025-06 - 2026-08",
       "hash": "rb_0625",
       "branch": "payments",
-      "desc": "Working on the Control Tower team within a digital payments platform. Most of my work has been around an internal support app used by customer service, finance, and operations teams to handle post-sale workflows — things like invoice adjustments, payments, and audit reports. On the backend I work on a Spring Boot microservice that surfaces this data, and on the frontend, helping move parts of the app from Retool to React.",
+      "desc": "Built internal apps for post-sale work: customer accounts, support, invoices, refunds and sale adjustments. Built and maintained a refund and reallocation system with multiple payments, approvals and audit logging, and developed Spring Boot REST APIs for sale and tax adjustments with permission-based approval flows, across microservices talking over REST and Kafka. Moved heavy data processing to the backend with efficient pagination and search, shipped behind LaunchDarkly flags and Drools rules, fixed Snyk vulnerabilities and upgraded services to a new major Spring Boot version. On the frontend, redesigned Retool apps and helped plan and start the migration to React and TypeScript, with Playwright tests. Deployed through CircleCI, debugged with Honeycomb and was part of the monthly on-call rotation.",
       "tech": [
         "Java",
         "Spring Boot",
+        "Kafka",
+        "PostgreSQL",
         "React",
-        "JavaScript",
+        "TypeScript",
         "Retool",
+        "JUnit",
+        "Playwright",
+        "LaunchDarkly",
         "CircleCI",
         "Honeycomb"
       ]
     },
     {
       "company": "University of Helsinki",
-      "role": "Research Assistant (Thesis)",
+      "role": "Research Assistant (Master's Thesis)",
       "period": "2025-01 - 2025-04",
       "hash": "uh_0125",
       "branch": "thesis",
-      "desc": "Worked on my Master's thesis, exploring how different data normalization approaches affect anomaly detection on real-world datasets.",
+      "desc": "Evaluated how adaptive normalization techniques affect the accuracy of anomaly detection models. Built data processing services in Python and FastAPI to run the evaluations, and compared models implemented in PyTorch and TensorFlow on real-world time series data from telecommunications networks and IoT sensors.",
       "tech": [
         "Python",
-        "IoT",
-        "Anomaly Detection",
-        "Data Modeling"
+        "FastAPI",
+        "PyTorch",
+        "TensorFlow",
+        "Anomaly Detection"
       ]
     },
     {
@@ -144,11 +150,12 @@
       "period": "2024-05 - 2024-08",
       "hash": "nokia_0524",
       "branch": "intern",
-      "desc": "Part of a joint research project looking at data efficiency techniques for mobile networks, mostly evaluating how normalization methods hold up on telecom data.",
+      "desc": "Joint research project on data efficiency techniques for mobile networks, with the Network Systems and Security Research Lab and Nokia's Network Operation department. Built the research foundation for my thesis: studied adaptive normalization techniques, evaluated datasets and worked with real mobile network data, including incomplete transmissions.",
       "tech": [
-        "Data Efficiency",
+        "Research",
+        "Data Analysis",
         "Mobile Networks",
-        "Research"
+        "Adaptive Normalization"
       ]
     },
     {
@@ -157,12 +164,14 @@
       "period": "2022-03 - 2023-02",
       "hash": "wav_0322",
       "branch": "freelance",
-      "desc": "Built and maintained mobile apps and a web console for clients, handled the backend APIs, and worked with their database and cloud setup.",
+      "desc": "Freelance work on client projects across backend, web and mobile. Built REST APIs in Java and Spring Boot with PostgreSQL and implemented JWT authentication for a client. Extended an Angular admin console, built a customer feedback feature in an Ionic app from UI to backend, and integrated Google Maps to show car dealer locations. Worked directly with enterprise clients on requirements.",
       "tech": [
-        "Angular",
-        "Ionic",
         "Java",
         "Spring Boot",
+        "PostgreSQL",
+        "JWT",
+        "Angular",
+        "Ionic",
         "AWS"
       ]
     },
@@ -172,54 +181,70 @@
       "period": "2021-08 - 2022-02",
       "hash": "big_0821",
       "branch": "backend",
-      "desc": "My first proper backend role — writing Spring Boot code, migrating databases, and getting familiar with deploying things on AWS.",
+      "desc": "My first proper backend role. Integrated APIs with Spring Boot, wrote MySQL migration scripts and Java unit tests before work reached client servers, and deployed applications to client servers on AWS in an agile team using Git, Jira and Confluence.",
       "tech": [
         "Java",
         "Spring Boot",
-        "Database Migration",
-        "PostgreSQL",
-        "Git"
+        "MySQL",
+        "AWS",
+        "Git",
+        "Jira"
       ]
     }
   ],
   "projects": [
     {
+      "name": "Clearpath",
+      "description": "Distributed platform with Kotlin/Ktor services, a Go service and a TypeScript/React web app, using PostgreSQL, Redis, MongoDB and Kafka on Docker and Kubernetes. Built by directing an AI agent, with the service boundaries, data invariants and tests designed and reviewed by me. Self-hosted on my own Linux server.",
+      "tech": [
+        "Kotlin",
+        "Go",
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "Kafka",
+        "Kubernetes"
+      ],
+      "demoUrl": "https://clearpath.golamwasy.dev",
+      "repoUrl": "https://github.com/golamwasy/clearpath",
+      "isPublic": true,
+      "updatedAt": "Aug 2026",
+      "language": "TypeScript",
+      "isPinned": true
+    },
+    {
       "name": "Planora",
-      "description": "AI-powered task management and project planning platform with real-time collaboration, Gantt charts, and automated risk assessment.",
+      "description": "AI-assisted project planning tool with an LLM-powered risk assessment feature. The model's output is shown alongside the reasoning behind it, so users can tell when to trust it and when to check it themselves.",
       "tech": [
         "React",
         "TypeScript",
         "Node.js",
         "PostgreSQL",
-        "Gemini AI"
+        "Tailwind CSS"
       ],
-      "stars": 12,
-      "forks": 4,
       "demoUrl": "https://planora.golamwasy.dev",
       "repoUrl": "https://github.com/golamwasy/planora",
-      "isPublic": false,
-      "updatedAt": "2 days ago",
+      "isPublic": true,
+      "updatedAt": "May 2026",
       "language": "TypeScript",
       "isPinned": true
     },
     {
       "name": "Portfolio",
-      "description": "Professional terminal-themed portfolio built with Next.js 15, featuring dynamic data from Vercel Edge Config and high-fidelity terminal UI components.",
+      "description": "This site. Terminal-themed portfolio built with Next.js 16 and React 19, with content served from Redis and self-hosted with Docker Compose behind Traefik on my own server, deployed by GitHub Actions.",
       "tech": [
-        "Next.js 15",
+        "Next.js 16",
         "React 19",
         "Tailwind CSS 4",
-        "Framer Motion",
-        "Edge Config"
+        "Redis",
+        "Docker"
       ],
-      "stars": 8,
-      "forks": 3,
       "demoUrl": "https://golamwasy.dev",
       "repoUrl": "https://github.com/golamwasy/golamwasy.github.io",
       "isPublic": true,
-      "updatedAt": "Just now",
+      "updatedAt": "Oct 2026",
       "language": "TypeScript",
-      "isPinned": true
+      "isPinned": false
     }
   ],
   "education": [
@@ -227,17 +252,17 @@
       "title": "M.Sc. Computer Science",
       "school": "University of Helsinki",
       "period": "2023 - 2025",
-      "desc": " Evaluating the Impact of Adaptive Normalization Techniques on Anomaly Detection Models.",
+      "desc": "Thesis: Evaluating the Impact of Adaptive Normalization Techniques on Anomaly Detection Models.",
       "tech": [
         "Data Normalization",
         "Anomaly Detection"
       ]
     },
     {
-      "title": "B.Sc. Software Engineering",
+      "title": "B.Sc. Computer Science (Software Engineering)",
       "school": "Universiti Teknologi Malaysia",
       "period": "2018 - 2022",
-      "desc": "Data Analytics For Predicting COVID-19 Cases Using Supervised Regression Techniques.",
+      "desc": "Thesis: Data Analytics for Predicting COVID-19 Cases Using Supervised Regression Techniques.",
       "tech": [
         "Software Engineering",
         "Data Analytics"

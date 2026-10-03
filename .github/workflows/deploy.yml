@@ -18,3 +18,9 @@ jobs:
       - name: Deploy with Docker Compose
         run: |
           docker compose up -d --build
+
+      # Redis is read before data/portfolio.json, so reload it on every deploy
+      # or content changes in the JSON never reach the live site.
+      - name: Seed portfolio content into Redis
+        run: |
+          docker compose --profile tools run --rm seed
