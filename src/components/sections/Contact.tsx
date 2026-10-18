@@ -39,12 +39,18 @@ export function Contact() {
         method: "POST",
       });
 
+      const limitResult = await limitResponse.json();
+
       if (limitResponse.status === 429) {
-        const result = await limitResponse.json();
-        setResetAt(result.resetAt);
+        setResetAt(limitResult.resetAt);
         setSubmitStatus("rate-limit");
         return;
       }
+
+      const accessKey =
+        limitResult.accessKey ||
+        process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+        "";
 
       // 2. If allowed, submit directly from the browser to Web3Forms
       // This bypasses Cloudflare server-side blocks
@@ -55,7 +61,7 @@ export function Contact() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "",
+          access_key: accessKey,
           subject: `New Message: ${formState.subject}`,
           from_name: formState.email,
           email: formState.email,

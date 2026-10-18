@@ -7,9 +7,14 @@ const WINDOW = 24 * 60 * 60; // 24 hours in seconds
 
 export async function POST() {
   const client = getRedisClient();
+  const rawKey =
+    process.env.WEB3FORMS_ACCESS_KEY ||
+    process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+    "";
+  const accessKey = rawKey.trim().replace(/^["']|["']$/g, "");
 
-  if (!client) {
-    return NextResponse.json({ success: true, allowed: true });
+  if (!client || client.status === 'end') {
+    return NextResponse.json({ success: true, allowed: true, accessKey });
   }
 
   try {
@@ -54,9 +59,9 @@ export async function POST() {
       }), 'EX', WINDOW);
     }
 
-    return NextResponse.json({ success: true, allowed: true });
+    return NextResponse.json({ success: true, allowed: true, accessKey });
 
-  } catch (error) {
-    return NextResponse.json({ success: true, allowed: true });
+  } catch {
+    return NextResponse.json({ success: true, allowed: true, accessKey });
   }
 }
