@@ -23,4 +23,5 @@ jobs:
       # or content changes in the JSON never reach the live site.
       - name: Seed portfolio content into Redis
         run: |
-          docker compose --profile tools run --rm seed
+          # Rebuild the tools-profile image so it contains this commit's JSON.
+          docker compose --profile tools run --build --rm seed

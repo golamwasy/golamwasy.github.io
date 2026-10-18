@@ -27,7 +27,7 @@ services:
     command: ["redis-server", "--save", "60", "1", "--appendonly", "yes"]
 
   # One-off helper to (re)load data/portfolio.json into Redis.
-  # Usage: docker compose --profile tools run --rm seed
+  # Usage: docker compose --profile tools run --build --rm seed
   seed:
     build:
       context: .
