@@ -80,12 +80,12 @@ export interface PortfolioData {
 export async function getPortfolioData(): Promise<PortfolioData> {
   try {
     const client = getRedisClient();
-    if (client) {
+    if (client && client.status !== 'end') {
       const raw = await client.get(PORTFOLIO_KEY);
       if (raw) return JSON.parse(raw) as PortfolioData;
     }
-  } catch (error) {
-    console.error('Redis fetch failed:', error);
+  } catch {
+    // Gracefully fall back to local seed file when Redis is offline
   }
 
   const seed = await readSeedFile();

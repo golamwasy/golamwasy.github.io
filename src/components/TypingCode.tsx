@@ -10,7 +10,7 @@ interface Token {
 export const TypingCode = () => {
   const { profile } = usePortfolio();
 
-  const codeTokens: Token[] = [
+  const codeTokens: Token[] = React.useMemo(() => [
     { text: "// Welcome to my workspace\n", color: "text-code-comment" },
     { text: "import ", color: "text-code-keyword" },
     { text: "{ ", color: "text-zinc-400" },
@@ -34,23 +34,20 @@ export const TypingCode = () => {
     { text: "\n    />\n", color: "text-code-tag" },
     { text: "  );\n", color: "text-zinc-400" },
     { text: "};", color: "text-zinc-400" },
-  ];
+  ], [profile.name, profile.role, profile.tagline]);
 
   const [displayedTokens, setDisplayedTokens] = useState<{ text: string; color: string }[]>([]);
   const [currentTokenIndex, setCurrentTokenIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
 
   useEffect(() => {
-    if (currentTokenIndex < codeTokens.length) {
-      const currentToken = codeTokens[currentTokenIndex];
+    if (currentTokenIndex >= codeTokens.length) return;
+    const currentToken = codeTokens[currentTokenIndex];
 
+    const timeout = setTimeout(() => {
       if (currentCharIndex < currentToken.text.length) {
-        const timeout = setTimeout(() => {
-          setCurrentCharIndex(prev => prev + 1);
-        }, 15 + Math.random() * 20); // Variable typing speed for realism
-        return () => clearTimeout(timeout);
+        setCurrentCharIndex(prev => prev + 1);
       } else {
-        // Token finished, move to next
         setDisplayedTokens(prev => [
           ...prev,
           { text: currentToken.text, color: currentToken.color }
@@ -58,17 +55,19 @@ export const TypingCode = () => {
         setCurrentTokenIndex(prev => prev + 1);
         setCurrentCharIndex(0);
       }
-    }
-  }, [currentTokenIndex, currentCharIndex]);
+    }, currentCharIndex < currentToken.text.length ? 15 + Math.random() * 20 : 0);
+
+    return () => clearTimeout(timeout);
+  }, [currentTokenIndex, currentCharIndex, codeTokens]);
 
   return (
-    <div className="flex gap-4">
-      <div className="text-zinc-700 select-none text-right w-4 font-mono text-xs leading-relaxed pt-0.5">
-        {Array.from({ length: 10 }).map((_, i) => (
+    <div className="flex gap-3 sm:gap-4 min-h-[210px] sm:min-h-[240px]">
+      <div className="text-zinc-600 select-none text-right w-4 shrink-0 font-mono text-[11px] sm:text-xs leading-relaxed">
+        {Array.from({ length: 12 }).map((_, i) => (
           <div key={i}>{i + 1}</div>
         ))}
       </div>
-      <div className="flex-1 font-mono text-xs lg:text-sm leading-relaxed whitespace-pre overflow-hidden">
+      <div className="flex-1 min-w-0 font-mono text-[11px] sm:text-xs lg:text-sm leading-relaxed whitespace-pre-wrap break-words">
         {displayedTokens.map((token, i) => (
           <span key={i} className={token.color}>{token.text}</span>
         ))}

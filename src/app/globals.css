@@ -127,17 +127,22 @@ body {
   color: var(--foreground);
   overflow-x: hidden;
   font-family: var(--font-geist-sans);
-  transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1), color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
-  transition-property: background-color, border-color, color, fill, stroke, box-shadow, opacity;
-  transition-duration: 1.2s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+/* Custom scrollbar for inner containers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
 }
-
-svg, i {
-  transition: color 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
 
 .font-mono {

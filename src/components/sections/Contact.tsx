@@ -19,6 +19,9 @@ export function Contact() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error" | "rate-limit">("idle");
   const [resetAt, setResetAt] = useState<number | null>(null);
 
+  const githubHandle = PROFILE.github.replace(/^@/, "");
+  const linkedinHandle = PROFILE.linkedin.replace(/^@/, "");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -67,7 +70,7 @@ export function Contact() {
       } else {
         setSubmitStatus("error");
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -78,48 +81,69 @@ export function Contact() {
     <Section
       id="contact"
       fullHeight={true}
-      className="pt-20 pb-4"
+      className="pt-16 pb-4"
       containerClassName="min-h-[calc(100vh-6rem)] flex flex-col justify-between"
     >
       <div className="flex-1 flex flex-col justify-center">
         <SectionHeading icon={Mail} title="./contact.exe" />
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
           <TerminalWindow title="contact_info.json" className="bg-zinc-950 border-zinc-800 shadow-2xl shadow-blue-500/5">
-            <div className="flex font-mono text-sm leading-relaxed min-h-[320px]">
-              <div className="flex flex-col text-zinc-700 pr-4 text-right select-none border-r border-zinc-800/50 mr-4">
-                {Array.from({ length: 16 }).map((_, i) => (
+            <div className="flex font-mono text-xs sm:text-sm leading-relaxed min-h-[300px] sm:min-h-[320px]">
+              <div className="flex flex-col text-zinc-600 pr-3 sm:pr-4 text-right select-none border-r border-zinc-800/50 mr-3 sm:mr-4 shrink-0">
+                {Array.from({ length: 14 }).map((_, i) => (
                   <span key={i}>{i + 1}</span>
                 ))}
               </div>
 
-              <div className="flex-1">
+              <div className="flex-1 min-w-0 break-words">
                 <div className="space-y-0.5">
                   <div><span className="text-code-bracket">{"{"}</span></div>
-                  <div className="pl-4">
-                    <span className="text-code-key">"status"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"available_for_opportunities"</span><span className="text-code-bracket">,</span>
+                  <div className="pl-3 sm:pl-4">
+                    <span className="text-code-key">&quot;status&quot;</span><span className="text-code-bracket">:</span> <span className="text-code-value">&quot;available_for_opportunities&quot;</span><span className="text-code-bracket">,</span>
                   </div>
-                  <div className="pl-4">
-                    <span className="text-code-key">"email"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"{PROFILE.email}"</span><span className="text-code-bracket">,</span>
+                  <div className="pl-3 sm:pl-4">
+                    <span className="text-code-key">&quot;email&quot;</span><span className="text-code-bracket">:</span>{" "}
+                    <a href={`mailto:${PROFILE.email}`} className="text-code-value underline decoration-green-500/40 hover:decoration-green-400 transition-colors">
+                      &quot;{PROFILE.email}&quot;
+                    </a>
+                    <span className="text-code-bracket">,</span>
                   </div>
-                  <div className="pl-4">
-                    <span className="text-code-key">"socials"</span><span className="text-code-bracket">:</span> <span className="text-code-bracket">{"{"}</span>
+                  <div className="pl-3 sm:pl-4">
+                    <span className="text-code-key">&quot;socials&quot;</span><span className="text-code-bracket">:</span> <span className="text-code-bracket">{"{"}</span>
                   </div>
-                  <div className="pl-8">
-                    <span className="text-code-key">"github"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"{PROFILE.github}"</span><span className="text-code-bracket">,</span>
+                  <div className="pl-6 sm:pl-8">
+                    <span className="text-code-key">&quot;github&quot;</span><span className="text-code-bracket">:</span>{" "}
+                    <a
+                      href={`https://github.com/${githubHandle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-code-value underline decoration-green-500/40 hover:decoration-green-400 transition-colors"
+                    >
+                      &quot;{PROFILE.github}&quot;
+                    </a>
+                    <span className="text-code-bracket">,</span>
                   </div>
-                  <div className="pl-8">
-                    <span className="text-code-key">"linkedin"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"{PROFILE.linkedin}"</span>
+                  <div className="pl-6 sm:pl-8">
+                    <span className="text-code-key">&quot;linkedin&quot;</span><span className="text-code-bracket">:</span>{" "}
+                    <a
+                      href={`https://linkedin.com/in/${linkedinHandle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-code-value underline decoration-green-500/40 hover:decoration-green-400 transition-colors"
+                    >
+                      &quot;{PROFILE.linkedin}&quot;
+                    </a>
                   </div>
-                  <div className="pl-4"><span className="text-code-bracket">{"}"}</span><span className="text-code-bracket">,</span></div>
-                  <div className="pl-4">
-                    <span className="text-code-key">"location"</span><span className="text-code-bracket">:</span> <span className="text-code-value">"{PROFILE.location}"</span>
+                  <div className="pl-3 sm:pl-4"><span className="text-code-bracket">{"}"}</span><span className="text-code-bracket">,</span></div>
+                  <div className="pl-3 sm:pl-4">
+                    <span className="text-code-key">&quot;location&quot;</span><span className="text-code-bracket">:</span> <span className="text-code-value">&quot;{PROFILE.location}&quot;</span>
                   </div>
                   <div><span className="text-code-bracket">{"}"}</span></div>
 
-                  <div className="pt-8 text-zinc-600 italic">// Waiting for connection...</div>
+                  <div className="pt-6 text-zinc-500 italic">{"// Click links above or run send_message.sh"}</div>
                   <div className="flex items-center gap-2 mt-2">
                     <span className="text-blue-500">➜</span>
-                    <span className="w-2 h-4 bg-blue-500/50 animate-pulse" />
+                    <span className="w-2 h-4 bg-blue-500/60 animate-pulse" />
                   </div>
                 </div>
               </div>
@@ -135,42 +159,42 @@ export function Contact() {
                 onChange={(e) => setFormState({ ...formState, honeypot: e.target.value })}
               />
 
-              <div className="space-y-1">
-                <label className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest">_email</label>
+              <div className="space-y-1.5">
+                <label className="text-[11px] text-zinc-400 font-mono uppercase tracking-widest block">_email</label>
                 <input
                   type="email"
                   required
                   placeholder="viewer@example.com"
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 focus:border-blue-500/50 outline-none text-xs font-mono text-zinc-300"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 focus:border-blue-500/60 outline-none text-xs font-mono text-zinc-200 placeholder:text-zinc-600 transition-colors"
                 />
               </div>
-              <div className="space-y-1">
-                <label className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest">_subject</label>
+              <div className="space-y-1.5">
+                <label className="text-[11px] text-zinc-400 font-mono uppercase tracking-widest block">_subject</label>
                 <input
                   type="text"
                   required
                   placeholder="Inquiry"
                   value={formState.subject}
                   onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 focus:border-blue-500/50 outline-none text-xs font-mono text-zinc-300"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 focus:border-blue-500/60 outline-none text-xs font-mono text-zinc-200 placeholder:text-zinc-600 transition-colors"
                 />
               </div>
-              <div className="space-y-1">
-                <label className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest">_body</label>
+              <div className="space-y-1.5">
+                <label className="text-[11px] text-zinc-400 font-mono uppercase tracking-widest block">_body</label>
                 <textarea
                   required
                   placeholder="Write your message here..."
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 h-32 focus:border-blue-500/50 outline-none text-xs font-mono text-zinc-300 resize-none"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 h-32 focus:border-blue-500/60 outline-none text-xs font-mono text-zinc-200 placeholder:text-zinc-600 resize-none transition-colors"
                 />
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-500/10 border border-blue-500/30 text-blue-500 py-3 rounded-lg hover:bg-blue-600 hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed transition-all font-mono text-xs flex items-center justify-center gap-2"
+                className="w-full bg-blue-600/15 border border-blue-500/40 text-blue-400 py-3 rounded-lg hover:bg-blue-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all font-mono text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isSubmitting ? (
                   <span className="animate-pulse">sudo_sending...</span>
