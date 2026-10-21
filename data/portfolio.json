@@ -230,6 +230,22 @@
       "isPinned": true
     },
     {
+      "name": "ScanUp",
+      "description": "iPhone app that shows the aircraft flying over you in real time, plus airport departure and arrival boards and live flight search. Built in SwiftUI with a small private FastAPI backend that merges free ADS-B feeds with a schedule provider, caches aggressively to stay inside free quotas, and is self-hosted on my own server.",
+      "tech": [
+        "Swift",
+        "SwiftUI",
+        "Python",
+        "FastAPI",
+        "Docker"
+      ],
+      "repoUrl": "https://github.com/golamwasy/ScanUp",
+      "isPublic": true,
+      "updatedAt": "Oct 2026",
+      "language": "Swift",
+      "isPinned": false
+    },
+    {
       "name": "Portfolio",
       "description": "This site. Terminal-themed portfolio built with Next.js 16 and React 19, with content served from Redis and self-hosted with Docker Compose behind Traefik on my own server, deployed by GitHub Actions.",
       "tech": [
