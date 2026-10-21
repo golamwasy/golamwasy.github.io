@@ -13,7 +13,7 @@ SEED=ghcr.io/golamwasy/portfolio-seed:latest
 id() { docker image inspect -f '{{.Id}}' "$1" 2>/dev/null || echo none; }
 
 before="$(id "$WEB") $(id "$SEED")"
-docker compose pull --quiet web seed
+docker compose pull --quiet web seed >/dev/null 2>&1 || { echo "$(date -Is) pull failed"; exit 1; }
 after="$(id "$WEB") $(id "$SEED")"
 
 # Also recover when the containers are missing (for example after a reboot wiped them).
